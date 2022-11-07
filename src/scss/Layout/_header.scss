@@ -1,0 +1,24 @@
+/** @format */
+.header__content {
+  .header__info {
+    text-align: right;
+    margin-bottom: 0;
+    @include styleText($color-white-0, $fs-0, $fw-2);
+    span {
+      border-right: 1px solid $color-white-0;
+      padding: 0.5rem;
+      margin-bottom: 0;
+    }
+  }
+  .myNavBar {
+    .navbar-nav {
+      border-bottom: 1px solid $color-gray-6;
+      .nav-link {
+        color: $color-white-0;
+        padding: $p-3 $p-5;
+        letter-spacing: 1px;
+        @include styleText($color-white-0, $fs-1 + 1, $fw-0);
+      }
+    }
+  }
+}

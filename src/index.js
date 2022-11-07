@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom'
 import Layout from './Layout'
 import reportWebVitals from './reportWebVitals'
 // Bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap'
 //Font-Awesome
 import '@fortawesome/fontawesome-free/css/all.min.css'
 //React-Toastify
