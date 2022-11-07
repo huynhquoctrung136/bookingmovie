@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import Layout from './Layout'
 import reportWebVitals from './reportWebVitals'
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -9,7 +9,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 //React-Toastify
 import 'react-toastify/dist/ReactToastify.css'
 //scss
-import './scss/index.scss'
+import './scss/main.scss'
 //store redux
 import { Provider } from 'react-redux'
 import {store} from './redux/configStore'
@@ -17,7 +17,7 @@ import {store} from './redux/configStore'
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+        <Layout/>
     </React.StrictMode>
   </Provider>,
   document.getElementById('root'),
