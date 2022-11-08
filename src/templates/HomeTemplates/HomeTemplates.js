@@ -10,11 +10,11 @@ const HomeTemplates = (props) => {
       {...restProps}
       render={(propsRoute) => {
         return (
-          <Fragment>
+          <>
             <Header {...propsRoute}/>
             <HomeCarousel {...propsRoute}/>
             <Component {...propsRoute} />
-          </Fragment>
+          </>
         )
       }}
     ></Route>

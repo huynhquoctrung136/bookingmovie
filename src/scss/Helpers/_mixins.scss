@@ -4,3 +4,18 @@
     font-size: $fs;
     font-weight: $fw;
 }
+
+@mixin styleButton($color,$bg-color,$border,$fs,$fw,$pd-y,$pd-x){
+    color: $color;
+    background:$bg-color ;
+    border:$border ;
+    font-size:$fs ;
+    font-weight: $fw;
+    padding: $pd-y $pd-x;
+    cursor: pointer;
+}
+@mixin  hoverButton($color-hover,$bg-hover,$border-hover) {
+    color: $color-hover;
+    background-color:$bg-hover;
+    border: 1px solid $border-hover;
+}

@@ -1,1 +1,23 @@
-//Dùng để chỉnh sửa code của thư viện animation
+/** @format */
+
+//CAROUSEL
+#movieCarousel {
+  .carousel-indicators {
+    button {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 3px solid $color-white-0;
+      background: transparent;
+      opacity: 1;
+      box-sizing: border-box;
+      &.active{
+        background-color: $color-white-0;
+      }
+    }
+
+  }
+}
+
+//END CAROUSEL

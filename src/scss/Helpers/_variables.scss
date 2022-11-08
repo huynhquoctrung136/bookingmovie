@@ -1,9 +1,12 @@
 //Chứa các giá trị biến
 /*===========COLOR========================*/
 //Color:
-$color-black-0:#29303b;
+$color-black-0:black,;
+$color-black-1:#29303b;
 $color-white-0:#fff;
 $color-black-light:#505763;
+$color-black-1:#717171;
+
 $color-white-cream:#f2f3f5;
 $color-gray-0:#68687f;
 $color-gray-1:rgba(20,23,28,0.05);
@@ -18,7 +21,10 @@ $color-blue-1: #76c5d6;
 $color-yellow-0:#f4c150;
 $color-yellow-1:#fbbd61;
 $color-yellow-2:#ec7532;
+$color-yellow-3:linear-gradient(to right, $color-yellow-1, $color-yellow-2);
+
 $color-purple:#6e1a52;
+$color-pink: #e00d7a;
 
 /*============FONT-SIZE,FONT-WEIGHT,LINE-HEIGHT==================*/
 //Font-size:
@@ -29,11 +35,13 @@ $fs-3:24px;
 $fs-4:36px;
 $fs-5:40px;
 $fs-6:50px;
+$fs-7:52px;
 //Font-weight
 $fw-0:normal;
 $fw-1:600;
 $fw-2:700;
 $fw-3:900;
+$fw-4:300;
 //Line-height:
 $line-height-0:1.43;
 /*===================MARGIN, PADDING==================================================*/
@@ -47,8 +55,11 @@ $p-2:5px;
 $p-3:20px;
 $p-4:30px;
 $p-5:24px;
+$p-6:40px;
+
 
 // border-radius
+$border-0:none;
 $boder-radius:2px;
 
 

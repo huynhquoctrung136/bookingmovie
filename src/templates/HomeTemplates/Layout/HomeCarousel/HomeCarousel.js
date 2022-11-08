@@ -4,7 +4,7 @@ import slide2 from './hero-2.jpg'
 import slide3 from './hero-3.jpg'
 const HomeCarousel = () => {
   return (
-    <div id="movieCarousel" className="carousel slide" data-bs-ride="carousel">
+    <div id="movieCarousel" className="carousel slide carousel-fade">
       <div className="carousel-indicators">
         <button
           type="button"
@@ -29,9 +29,10 @@ const HomeCarousel = () => {
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <img src={slide1} className="d-block w-100" alt="..." />
-          <div className="carousel-caption d-none d-md-block">
-            <div className="movieCarousel__caption">
+          <img style={{height:"600px"}} src={slide1} className="d-block w-100" alt="..." />
+          <div className='movieCarousel__overlay'></div>
+          <div className="container carousel-caption d-none d-md-block">
+            <div className="col-9">
               <p className="movieType">ACTION, ADVENTURE, FANTASY</p>
               <h2 className="movieName">End of the World: Part I</h2>
               <p className="movieDescription">
@@ -40,20 +41,21 @@ const HomeCarousel = () => {
                 text ever since the 1500s, when an unknown printer took a galley
                 of type and scrambled it to make a type specimen book.
               </p>
-            </div>
-            <div className="movieCarousel__button">
-              <button className="button button--trailer">
-                <i className="fa fa-play"></i>
-                XEM TRAILER
-              </button>
-              <button className="button button--booking">MUA VÉ</button>
+              <div className="movieCarousel__button">
+                <button className="button button--trailer">
+                  <i className="fa fa-play"></i>
+                  XEM TRAILER
+                </button>
+                <button className="button button--booking">MUA VÉ</button>
+              </div>
             </div>
           </div>
         </div>
-        <div className="carousel-item">
-          <img src={slide2} className="d-block w-100" alt="..." />
-          <div className="carousel-caption d-none d-md-block">
-            <div className="movieCarousel__caption">
+        <div className="carousel-item active">
+          <img style={{height:"600px"}} src={slide2} className="d-block w-100" alt="..." />
+          <div className='movieCarousel__overlay'></div>
+          <div className="container carousel-caption d-none d-md-block">
+            <div className="col-9">
               <p className="movieType">ACTION, ADVENTURE, FANTASY</p>
               <h2 className="movieName">End of the World: Part I</h2>
               <p className="movieDescription">
@@ -62,20 +64,21 @@ const HomeCarousel = () => {
                 text ever since the 1500s, when an unknown printer took a galley
                 of type and scrambled it to make a type specimen book.
               </p>
-            </div>
-            <div className="movieCarousel__button">
-              <button className="button button--trailer">
-                <i className="fa fa-play"></i>
-                XEM TRAILER
-              </button>
-              <button className="button button--booking">MUA VÉ</button>
+              <div className="movieCarousel__button">
+                <button className="button button--trailer">
+                  <i className="fa fa-play"></i>
+                  XEM TRAILER
+                </button>
+                <button className="button button--booking">MUA VÉ</button>
+              </div>
             </div>
           </div>
         </div>
-        <div className="carousel-item">
-          <img src={slide3} className="d-block w-100" alt="..." />
-          <div className="carousel-caption d-none d-md-block">
-            <div className="movieCarousel__caption">
+        <div className="carousel-item active">
+          <img style={{height:"600px"}} src={slide3} className="d-block w-100" alt="..." />
+          <div className='movieCarousel__overlay'></div>
+          <div className="container carousel-caption d-none d-md-block">
+            <div className="col-9">
               <p className="movieType">ACTION, ADVENTURE, FANTASY</p>
               <h2 className="movieName">End of the World: Part I</h2>
               <p className="movieDescription">
@@ -84,35 +87,17 @@ const HomeCarousel = () => {
                 text ever since the 1500s, when an unknown printer took a galley
                 of type and scrambled it to make a type specimen book.
               </p>
-            </div>
-            <div className="movieCarousel__button">
-              <button className="button button--trailer">
-                <i className="fa fa-play"></i>
-                XEM TRAILER
-              </button>
-              <button className="button button--booking">MUA VÉ</button>
+              <div className="movieCarousel__button">
+                <button className="button button--trailer">
+                  <i className="fa fa-play"></i>
+                  XEM TRAILER
+                </button>
+                <button className="button button--booking">MUA VÉ</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#movieCarousel"
-        data-bs-slide="prev"
-      >
-        <span className="carousel-control-prev-icon" aria-hidden="true" />
-        <span className="visually-hidden">Previous</span>
-      </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#movieCarousel"
-        data-bs-slide="next"
-      >
-        <span className="carousel-control-next-icon" aria-hidden="true" />
-        <span className="visually-hidden">Next</span>
-      </button>
     </div>
   )
 }

@@ -2,8 +2,8 @@ import React from 'react'
 import logoBrand from './assets/logo.svg'
 const Header = (props) => {
   return (
-    <div className="header__content container">
-      <p className="bg-dark header__info">
+    <div className="header__content">
+      <p className="bg-dark header__info pt-3">
         <i className="fas fa-phone-alt"></i>
         <span className="mx-3">+0344549065</span>
         <i className="fa fa-search"></i>

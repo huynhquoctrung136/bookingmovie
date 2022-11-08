@@ -1,0 +1,89 @@
+/** @format */
+.button--trailer {
+  position: relative;
+  overflow: hidden;
+  @include styleButton(
+    $color-white-0,
+    $color-yellow-3,
+    $border-0,
+    $fs-0 - 1,
+    $fw-0,
+    $p-0,
+    $p-6
+  );
+  border-radius: 25px;
+  letter-spacing: 3px;
+  margin-right: 10px;
+  &::before {
+    content: "";
+    width: 110%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: $color-yellow-2;
+    //Chưa hover
+    transform: skewX(30deg) translateX(-120%);
+    transition: 0.5s;
+  }
+  &:hover::before {
+    transform: skewX(30deg) translateX(-10px);
+  }
+}
+
+//Đã hover
+.button--booking {
+  position: relative;
+  overflow: hidden;
+  @include styleButton(
+    $color-white-0,
+    $color-pink,
+    $border-0,
+    $fs-0 - 1,
+    $fw-0,
+    $p-0,
+    $p-6
+  );
+  border-radius: 25px;
+  letter-spacing: 3px;
+  margin-right: 10px;
+  &::before {
+    content: "";
+    width: 110%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: $color-yellow-2;
+    //Chưa hover
+    transform: skewX(30deg) translateX(-120%);
+    transition: 0.5s;
+  }
+  &:hover::before {
+    transform: skewX(30deg) translateX(-10px);
+  }
+}
+
+//   @include styleButton(
+//     $color-white-0,
+//     $color-pink,
+//     $border-0,
+//     $fs-0 - 1,
+//     $fw-0,
+//     $p-0,
+//     $p-6
+//   );
+//   border-radius: 25px;
+//   letter-spacing: 4px;
+//   transition: 0.5s;
+//   &:hover{
+//     @include hoverButton(
+//         $color-black-0,
+//         $color-yellow-2,
+//         transparent,
+//       )
+//   }
