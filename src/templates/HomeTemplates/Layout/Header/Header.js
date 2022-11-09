@@ -1,6 +1,10 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import logoBrand from './assets/logo.svg'
 const Header = (props) => {
+
+
+
   return (
     <div className="header__content">
       <p className="bg-dark header__info pt-3">
@@ -10,9 +14,9 @@ const Header = (props) => {
       </p>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark myNavBar">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <NavLink className="navbar-brand" to="">
             <img src={logoBrand} alt="logoBrand" />
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -25,31 +29,36 @@ const Header = (props) => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="movieNavBar">
-            <ul className="navbar-nav" style={{marginLeft:"auto"}}>
+            <ul className="navbar-nav" style={{ marginLeft: 'auto' }}>
               <li className="nav-item active line">
-                <a className="nav-link" aria-current="page" href="#">
+                <NavLink  className="myNavBar__navLink" to="/">
                   Trang chủ
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item line">
-                <a className="nav-link" href="#">
+                <NavLink className="myNavBar__navLink" to="/">
                   Lịch chiếu
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item line">
-                <a className="nav-link" href="#">
+                <NavLink className="myNavBar__navLink" to="/news">
                   Tin tức
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item line">
-                <a className="nav-link" href="#">
+                <NavLink className="myNavBar__navLink" to="/contact">
+                  Liên hệ
+                </NavLink>
+              </li>
+              <li className="nav-item line">
+                <NavLink className="myNavBar__navLink" to="">
                   Đăng ký
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item line">
-                <a className="nav-link" href="#">
+                <NavLink className="myNavBar__navLink" to="">
                   Đăng nhập
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>

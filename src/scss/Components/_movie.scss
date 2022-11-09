@@ -1,0 +1,74 @@
+/** @format */
+
+.movieContent {
+  .movieContent__image {
+    position: relative;
+    margin-bottom: $m-2;
+    border-radius: 30px;
+    img {
+      height: 350px;
+      width: 100%;
+    }
+    .movieContent__play {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: 0.5s;
+      a {
+        color: $color-white-0;
+        text-decoration: none;
+        i {
+          width: 80px;
+          height: 80px;
+          border: 2px solid $color-white-0;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 80px;
+          color: $color-white-0;
+          transform: scale(1);
+          transition: 0.5s;
+          &:hover {
+            transform: scale(0.9);
+          }
+        }
+      }
+    }
+    .movieContent__overplay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to top, $color-black-0, transparent);
+      opacity: 0;
+      transition: all 0.5s;
+    }
+  }
+
+  //Sau khi hover
+  .movieContent__image {
+    &:hover {
+      .movieContent__overplay {
+        opacity: 1;
+      }
+      .movieContent__play {
+        opacity: 1;
+      }
+    }
+  }
+
+  .movieContent__name {
+    text-align: center;
+    h3 {
+      @include styleText($color-black-0, $fs-2, $fw-1);
+      text-transform: uppercase;
+    }
+  }
+}

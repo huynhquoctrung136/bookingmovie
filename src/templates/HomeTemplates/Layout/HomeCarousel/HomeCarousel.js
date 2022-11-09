@@ -25,7 +25,7 @@ const HomeCarousel = (props) => {
               style={{ height: '600px' }}
               src={item.hinhAnh}
               className="w-100"
-              alt="..."
+              alt={item.hinhAnh}
             />
           </div>
           <div className="movieCarousel__overlay"></div>

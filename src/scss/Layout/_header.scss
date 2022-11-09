@@ -1,8 +1,8 @@
 /** @format */
 .header__content {
-  // position: fixed;
-  // width: 100%;
-  // z-index: 999;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
   .header__info {
     text-align: right;
     margin-bottom: 0;
@@ -16,7 +16,8 @@
   .myNavBar {
     .navbar-nav {
       border-bottom: 1px solid $color-gray-6;
-      .nav-link {
+      .myNavBar__navLink {
+        text-decoration: none;
         color: $color-white-0;
         padding: $p-3 $p-5;
         letter-spacing: 1px;

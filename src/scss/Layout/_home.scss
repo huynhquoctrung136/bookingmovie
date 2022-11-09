@@ -1,0 +1,17 @@
+/** @format */
+.newIn {
+  .newIn__title {
+    @include styleText($color-yellow-1, $fs-2, $fw-0);
+    border-bottom: 2px solid $color-black-2;
+    letter-spacing: 1.7px;
+    margin-bottom: 40px;
+    &::after {
+      content: "";
+      background: linear-gradient(to right, $color-yellow-1, $color-yellow-2);
+      display: block;
+      width: 125px;
+      height: 4px;
+      margin-top: 20px;
+    }
+  }
+}
