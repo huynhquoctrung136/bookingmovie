@@ -1,6 +1,8 @@
 /** @format */
 
 .movieContent {
+  padding: 10px;
+  overflow: hidden;
   .movieContent__image {
     position: relative;
     margin-bottom: $m-2;
