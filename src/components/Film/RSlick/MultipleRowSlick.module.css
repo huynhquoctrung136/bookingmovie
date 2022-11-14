@@ -9,3 +9,11 @@
 .width-items {
   width: 100%;
 }
+.active__Film{
+  background-color:#111;
+  color: #fff;
+}
+.none__active__Film{
+background-color: #fff;
+color: #111;
+}

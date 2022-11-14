@@ -74,3 +74,12 @@
     }
   }
 }
+
+.active__Film{
+    background-color: $color-black-0;
+    color: $color-white-0;
+}
+.none__active__Film{
+  background-color: $color-white-0;
+  color: $color-black-0;
+}

@@ -27,3 +27,10 @@
   background-color: $bg-hover;
   border: 1px solid $border-hover;
 }
+
+
+@mixin activeButton($color-active,$bg-active,$boder-active) {
+  color: $color-active;
+  background-color: $bg-active;
+  border: $boder-active;
+}

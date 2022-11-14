@@ -2,16 +2,95 @@
 .newIn {
   .newIn__title {
     @include styleText($color-yellow-1, $fs-2, $fw-0);
-    border-bottom: 2px solid $color-black-2;
     letter-spacing: 1.7px;
     margin-bottom: 40px;
+    text-transform: uppercase;
     &::after {
       content: "";
       background: linear-gradient(to right, $color-yellow-1, $color-yellow-2);
       display: block;
-      width: 125px;
+      width: 145px;
       height: 4px;
       margin-top: 20px;
+    }
+  }
+  .newIn__button {
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+.showTime {
+  .showTime__title {
+    @include styleText($color-yellow-1, $fs-2, $fw-0);
+    letter-spacing: 1.7px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    &::after {
+      content: "";
+      background: linear-gradient(to right, $color-yellow-1, $color-yellow-2);
+      display: block;
+      width: 100px;
+      height: 4px;
+      margin-top: 20px;
+    }
+  }
+  .showTime__content {
+    border: 1px solid $color-black-3;
+  }
+  .cumRap__content {
+    display: flex;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    .cumRap__desc {
+      padding-left: 20px;
+      .cumRap__name {
+        @include styleText($color-blue-2, $fs-0, $fw-5);
+      }
+      .cumRap__district {
+        @include styleText($color-gray-7, $fs-0 - 2, $fw-0);
+      }
+    }
+  }
+  .showTime__row {
+    img {
+      border-radius: 10px;
+    }
+    .showTimeRow__title {
+      @include styleText($color-yellow-2, $fs-0, $fw-0);
+      letter-spacing: 2px;
+      margin-bottom: 0;
+    }
+    .showTimeRow__name {
+      @include styleText($color-black-5, $fs-3, $fw-4);
+    }
+    .showTimeRow__NavLink {
+      @include styleText($color-yellow-2, $fs-0 - 2, $fw-0);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      transition: 0.5s;
+      &:hover {
+        color: $color-black-0;
+      }
+    }
+    .showTimeRow__runningTimes {
+      @include styleText($color-gray-8, $fs-0 - 2, $fw-0);
+      letter-spacing: 1.5px;
+      margin-right: $m-3;
+    }
+    .showTime__mins {
+      span:last-child {
+        width: 33px;
+        height: 33px;
+        display: inline-block;
+        background: $color-gray-8;
+        color: $color-white-0;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 33px;
+        font-weight: $fw-2;
+      }
     }
   }
 }

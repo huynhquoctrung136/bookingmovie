@@ -3,7 +3,7 @@ import React from 'react'
 const Film = (props) => {
   let { phim } = props
   return (
-    <div className='movieContent'>
+    <div className="movieContent">
       <div className="movieContent__image">
         <div
           style={{
@@ -23,7 +23,11 @@ const Film = (props) => {
         </div>
       </div>
       <div className="movieContent__name">
-        <h3>{phim.tenPhim}</h3>
+        {phim.tenPhim.length > 10 ? (
+          <h3>{phim.tenPhim.substr(0, 20)}...</h3>
+        ) : (
+          <h3>{phim.tenPhim}</h3>
+        )}
         <a href="#">
           <button className="button button--booking">Mua Vé</button>
         </a>

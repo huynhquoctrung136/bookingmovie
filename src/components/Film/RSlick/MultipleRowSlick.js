@@ -1,9 +1,15 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Slider from 'react-slick'
+import {
+  SET_PHIM_DANG_CHIEU,
+  SET_PHIM_SAP_CHIEU,
+} from '../../../redux/actions/types/QuanLyPhimType'
 import Film from '../Film'
 import styleSlick from './MultipleRowSlick.module.css'
-function SampleNextArrow(props) {
+const SampleNextArrow = (props) => {
   const { className, style, onClick } = props
+
   return (
     <div
       className={`${className} ${styleSlick['slick-prev']}`}
@@ -12,7 +18,7 @@ function SampleNextArrow(props) {
     />
   )
 }
-function SamplePrevArrow(props) {
+const SamplePrevArrow = (props) => {
   const { className, style, onClick } = props
   return (
     <div
@@ -33,6 +39,9 @@ const MultipleRowSlick = (props) => {
       )
     })
   }
+  const { dangChieu, sapChieu } = useSelector((state) => state.QuanLyPhim)
+  let activePDC = dangChieu === true ? 'active' : ''
+  let activePSC = sapChieu === true ? 'active' : ''
 
   const settings = {
     infinite: true,
@@ -44,9 +53,30 @@ const MultipleRowSlick = (props) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   }
+  const dispatch = useDispatch()
 
   return (
     <div>
+      <div className="newIn__button mb-3">
+        <button
+          onClick={() => {
+            const action = { type: SET_PHIM_DANG_CHIEU }
+            dispatch(action)
+          }}
+          className={`${activePDC} btn--showing`}
+        >
+          PHIM ĐANG CHIẾU
+        </button>
+        <button
+          onClick={() => {
+            const action = { type: SET_PHIM_SAP_CHIEU }
+            dispatch(action)
+          }}
+          className={`${activePSC} btn--comming`}
+        >
+          PHIM SẮP CHIẾU
+        </button>
+      </div>
       <Slider {...settings}>{renderFilms()}</Slider>
     </div>
   )
