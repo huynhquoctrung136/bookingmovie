@@ -26,6 +26,8 @@ const initialState = {
   arrFilmDefault: [],
   dangChieu: false,
   sapChieu: true,
+
+
 }
 
 export const QuanLyPhimReducer = (state = initialState, action) => {
@@ -51,6 +53,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
       )
       return { ...state }
     }
+    
 
     default:
       return state

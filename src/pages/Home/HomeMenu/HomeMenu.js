@@ -18,6 +18,7 @@ const HomeMenu = (props) => {
                 backgroundImage: `${heThongRap.logo}`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
+               
               }}
             >
               <img
@@ -56,7 +57,10 @@ const HomeMenu = (props) => {
                   {/* Load danh sách phim theo cụm rạp */}
                   {cumRap.danhSachPhim.slice(0, 4).map((phim, index) => {
                     return (
-                      <div className="row py-3 showTime__row">
+                      <div
+                        key={`phim-${index}`}
+                        className="row py-3 showTime__row"
+                      >
                         <div className="col-3">
                           <img
                             className="img-fluid"
@@ -76,21 +80,24 @@ const HomeMenu = (props) => {
                           <p>{/* Mô tả */}</p>
                           <p>
                             <NavLink className="showTimeRow__NavLink" to="#">
-                              Full Detail <i class="fa fa-angle-right"></i>
+                              Full Detail <i className="fa fa-angle-right"></i>
                             </NavLink>
                           </p>
 
                           <div className="row">
                             <div className="col-10 ">
                               <span className="showTimeRow__runningTimes d-flex align-items-center">
-                                <i class="fa fa-clock"></i>VIEWING TIMES
+                                <i className="fa fa-clock"></i>VIEWING TIMES
                               </span>
                               <div>
                                 {phim.lstLichChieuTheoPhim
                                   ?.slice(0, 8)
                                   .map((lichChieu, index) => {
                                     return (
-                                      <button className="btn--runningTimes mt-2">
+                                      <button
+                                        key={`lichchieu-${index}`}
+                                        className="btn--runningTimes mt-2"
+                                      >
                                         {moment(
                                           lichChieu.ngayChieuGioChieu,
                                         ).format('hh:mm A')}

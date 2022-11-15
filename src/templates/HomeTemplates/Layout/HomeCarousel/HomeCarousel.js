@@ -12,9 +12,8 @@ const HomeCarousel = (props) => {
   const renderImg = () => {
     return arrImg.map((item, index) => {
       return (
-        <div className="carousel-item active">
+        <div key={`carousel-${index}`} className="carousel-item active">
           <div
-            key={`carousel(${index})`}
             style={{
               backgroundImage: `url(${item.hinhAnh})`,
               backgroundRepeat: 'no-repeat',

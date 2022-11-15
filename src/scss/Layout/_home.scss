@@ -1,5 +1,6 @@
 /** @format */
 .newIn {
+  background: $color-black-0;
   .newIn__title {
     @include styleText($color-yellow-1, $fs-2, $fw-0);
     letter-spacing: 1.7px;
@@ -20,6 +21,7 @@
   }
 }
 .showTime {
+  background-color: $color-white-0;
   .showTime__title {
     @include styleText($color-yellow-1, $fs-2, $fw-0);
     letter-spacing: 1.7px;
@@ -39,6 +41,7 @@
   }
   .cumRap__content {
     display: flex;
+    border-bottom: 1px solid $color-black-3;
     img {
       width: 50px;
       height: 50px;
@@ -54,6 +57,7 @@
     }
   }
   .showTime__row {
+    border-bottom: 1px solid $color-black-3;
     img {
       border-radius: 10px;
     }

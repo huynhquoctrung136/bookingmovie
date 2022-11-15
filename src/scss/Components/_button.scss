@@ -108,3 +108,16 @@
   letter-spacing: 1px;
   margin-right: 8px;
 }
+.btn--booking{
+  @include styleButton(
+    $color-white-0,
+    $color-red,
+    $border-0,
+    $fs-9,
+    $fw-0,
+    $p-7,
+    $p-8
+  );
+  border-radius: 4px;
+  margin-bottom: 20px;
+}

@@ -3,6 +3,7 @@
 .movieContent {
   padding: 10px;
   overflow: hidden;
+ 
   .movieContent__image {
     position: relative;
     margin-bottom: $m-2;
@@ -69,7 +70,7 @@
   .movieContent__name {
     text-align: center;
     h3 {
-      @include styleText($color-black-0, $fs-2, $fw-1);
+      @include styleText($color-white-0, $fs-2, $fw-1);
       text-transform: uppercase;
     }
   }

@@ -1,0 +1,124 @@
+/** @format */
+.detail {
+  .detail__content {
+    top: 50%;
+    left: 50%;
+    color: #e9e9e9;
+    width: 100%;
+    height: 320px;
+    position: absolute;
+    max-width: 870px;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    .detailContent__Film {
+      .detailContent__image {
+        position: relative;
+        img {
+          width: 250px;
+          height: auto;
+          position: relative;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .detailContent__overplay {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: linear-gradient(to top, $color-black-0, transparent);
+          opacity: 0;
+          transition: all 0.5s;
+        }
+        .detailContent__play {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 1;
+          transition: 0.5s;
+          a {
+            color: $color-white-0;
+            text-decoration: none;
+            i {
+              width: 80px;
+              height: 80px;
+              border: 2px solid $color-white-0;
+              border-radius: 50%;
+              text-align: center;
+              line-height: 80px;
+              color: $color-white-0;
+              transform: scale(1);
+              transition: 0.5s;
+              &:hover {
+                transform: scale(0.9);
+              }
+            }
+          }
+        }
+      }
+      .detailContent__desc {
+        align-items: center;
+        justify-content: center;
+        padding: 0 15px;
+        .detailContentDes__time {
+          color: $color-white-0;
+        }
+        .detailContentDes__name {
+          @include styleText($color-white-0, $fs-3, $fw-0);
+        }
+      }
+    }
+    .detailContent__Tab {
+      width: 100%;
+
+      .detailTab__button {
+        background-color: $color-white-cream;
+        border-radius: 10px;
+        .ant-tabs-nav-list {
+          justify-content: center;
+        }
+        .detailButton__htr {
+        
+          padding: 20px;
+          justify-content: center;
+          align-items: center;
+          .detailButtonHTR__name {
+            padding-left: 10px;
+            text-transform: uppercase;
+            @include styleText($color-black-0, $fs-10, $fw-0);
+          }
+        }
+      }
+    }
+  }
+  .detailRating__content {
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .detailCumRapChieu__content {
+    border-bottom: 1px solid $color-black-3;
+    padding: 15px 0;
+    img {
+      width: 50px;
+    }
+    .detailCumRapChieu_desc {
+      padding: 0 15px;
+      .detailCumRapChieu__name {
+        @include styleText($color-blue-2, $fs-0, $fw-5);
+      }
+      .detailCumRapChieu__district {
+        @include styleText($color-gray-9, $fs-0, $fw-5);
+      }
+    }
+  }
+}

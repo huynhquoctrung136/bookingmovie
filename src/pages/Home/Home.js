@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import MultipleRowSlick from '../../components/Film/RSlick/MultipleRowSlick'
 import { layDanhSachPhim } from '../../redux/actions/QuanLyPhimAction'
 import { layDanhSachCumRap } from '../../redux/actions/QuanLyRapAction'
+import HomeCarousel from '../../templates/HomeTemplates/Layout/HomeCarousel/HomeCarousel'
 import HomeMenu from './HomeMenu/HomeMenu'
 const Home = (props) => {
   const { arrPhim } = useSelector((state) => state.QuanLyPhim)
   const { heThongRapChieu } = useSelector((state) => state.QuanLyRap)
-  console.log('heThongRapChieu', heThongRapChieu)
+  // console.log('heThongRapChieu', heThongRapChieu)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(layDanhSachPhim())
@@ -15,6 +16,7 @@ const Home = (props) => {
   }, [])
   return (
     <>
+      <HomeCarousel />
       <div className="newIn section">
         <div className="container">
           <h2 className="newIn__title">Showing Movie</h2>

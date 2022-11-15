@@ -30,7 +30,7 @@ const Header = (props) => {
           </button>
           <div className="collapse navbar-collapse" id="movieNavBar">
             <ul className="navbar-nav" style={{ marginLeft: 'auto' }}>
-              <li className="nav-item active line">
+              <li className="nav-item line">
                 <NavLink  className="myNavBar__navLink" to="/">
                   Trang chủ
                 </NavLink>

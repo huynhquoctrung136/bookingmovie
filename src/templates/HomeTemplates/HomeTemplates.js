@@ -11,8 +11,7 @@ const HomeTemplates = (props) => {
       render={(propsRoute) => {
         return (
           <>
-            <Header {...propsRoute}/>
-            <HomeCarousel {...propsRoute}/>
+            <Header {...propsRoute} />
             <Component {...propsRoute} />
           </>
         )
