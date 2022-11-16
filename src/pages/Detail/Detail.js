@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CustomCard } from '@tsamantanis/react-glassmorphism'
-import Logo from './movie-2.jpg'
-import { Tabs, Radio, Space, Rate } from 'antd'
+import { Tabs, Rate } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { layThongTinChiTietPhim } from '../../redux/actions/QuanLyRapAction'
 import moment from 'moment' //npm i moment
@@ -29,7 +28,7 @@ const Detail = (props) => {
       }}
     >
       <CustomCard
-        style={{ paddingTop: 150, minHeight: '100vh' }}
+        style={{ paddingTop: 150, minHeight: '150vh' }}
         effectColor="#fff" // required
         color="#fff" // default color is white
         blur={10} // default blur value is 10px
@@ -191,7 +190,54 @@ const Detail = (props) => {
                     </Tabs>
                   </Tabs.TabPane>
                   <Tabs.TabPane tab="Thông Tin" key="2">
-                    Content of Tab Pane 2
+                    <div
+                      className="detailFilm__content"
+                      style={{ padding: '24px' }}
+                    >
+                      <div className="container-fluid">
+                        <div className="row">
+                          <div className="col-6">
+                            <div className="row mb-2">
+                              <p style={{ width: '30%' }}>Ngày công chiếu</p>
+                              <p style={{ width: '70%' }}>{moment(filmDetail.ngayKhoiChieu).format("hh:mm A")}</p>
+                            </div>
+                            <div className="row mb-2">
+                              <p style={{ width: '30%' }}>Đạo diễn</p>
+                              <p style={{ width: '70%' }}>Adam Wingard</p>
+                            </div>
+                            <div className="row mb-2">
+                              <p style={{ width: '30%' }}>Diễn viên</p>
+                              <p style={{ width: '70%' }}>
+                                Kyle Chandler, Rebecca Hall, Eiza González,
+                                Millie Bobby Brown
+                              </p>
+                            </div>
+                            <div className="row mb-2">
+                              <p style={{ width: '30%' }}>Thể Loại</p>
+                              <p style={{ width: '70%' }}>
+                                hành động, giả tưởng, ly kỳ, thần thoại
+                              </p>
+                            </div>
+                            <div className="row mb-2">
+                              <p style={{ width: '30%' }}>Định dạng</p>
+                              <p style={{ width: '70%' }}>2D/Digital</p>
+                            </div>
+                            <div className="row mb-2">
+                              <p style={{ width: '30%' }}>Quốc Gia SX</p>
+                              <p style={{ width: '70%' }}>Mỹ</p>
+                            </div>
+                          </div>
+                          <div className="col-6">
+                            <div className='row mb-2'>
+                              <p style={{ width: '30%' }}>Nội dung</p>
+                            </div>
+                            <div className='row mb-2'>
+                              <p>{filmDetail.moTa}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </Tabs.TabPane>
                   <Tabs.TabPane tab="Bình luận" key="3">
                     Content of Tab Pane 3

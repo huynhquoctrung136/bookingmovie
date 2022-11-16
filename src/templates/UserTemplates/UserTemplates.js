@@ -1,24 +1,19 @@
 import React, { Fragment } from 'react'
 import { Route } from 'react-router'
-import Footer from './Layout/Footer/Footer'
-import Header from './Layout/Header/Header'
-
-const HomeTemplates = (props) => {
+const UserTemplates = (props) => {
   const { Component, ...restProps } = props
   return (
     <Route
       {...restProps}
       render={(propsRoute) => {
         return (
-          <>
-            <Header {...propsRoute} />
+          <div class="user__template">
             <Component {...propsRoute} />
-            <Footer {...propsRoute} />
-          </>
+          </div>
         )
       }}
     ></Route>
   )
 }
 
-export default HomeTemplates
+export default UserTemplates

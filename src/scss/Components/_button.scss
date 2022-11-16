@@ -108,7 +108,7 @@
   letter-spacing: 1px;
   margin-right: 8px;
 }
-.btn--booking{
+.btn--booking {
   @include styleButton(
     $color-white-0,
     $color-red,
@@ -121,3 +121,41 @@
   border-radius: 4px;
   margin-bottom: 20px;
 }
+
+.btn--login {
+  @include styleButton(
+    $color-white-0,
+    $color-red,
+    $border-0,
+    $fs-9,
+    $fw-0,
+    $p-7,
+    $p-8
+  );
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: 0.5s;
+  &:hover{
+    @include hoverButton($color-red, $color-white-0, $border-0);
+  }
+}
+.btn--register {
+  @include styleButton(
+    $color-white-0,
+    $color-blue-2,
+    $border-0,
+    $fs-9,
+    $fw-0,
+    $p-7,
+    $p-8
+  );
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: 0.5s;
+  &:hover{
+    @include hoverButton($color-blue-2, $color-white-0, $border-0);
+  }
+}
+

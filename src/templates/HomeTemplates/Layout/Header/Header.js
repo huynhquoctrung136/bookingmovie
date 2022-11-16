@@ -51,12 +51,12 @@ const Header = (props) => {
                 </NavLink>
               </li>
               <li className="nav-item line">
-                <NavLink className="myNavBar__navLink" to="">
+                <NavLink className="myNavBar__navLink" to="/register">
                   Đăng ký
                 </NavLink>
               </li>
               <li className="nav-item line">
-                <NavLink className="myNavBar__navLink" to="">
+                <NavLink className="myNavBar__navLink" to="/login">
                   Đăng nhập
                 </NavLink>
               </li>
