@@ -1,6 +1,7 @@
 /** @format */
 
 footer {
+  background: $color-black-0;
   .footer__content {
     h3 {
       @include styleText($color-yellow-2, $fs-9, $fw-0);

@@ -5,14 +5,24 @@ import { useDispatch, useSelector } from 'react-redux'
 import { layThongTinChiTietPhim } from '../../redux/actions/QuanLyRapAction'
 import moment from 'moment' //npm i moment
 import { NavLink } from 'react-router-dom'
+import ModalFilm from '../../components/ModalFilm/ModalFilm'
 const { TabPane } = Tabs
 
 const Detail = (props) => {
   const [tabPosition, setTabPosition] = useState('left')
+  const [isShowModalTrailer, setIsShowModalTrailer] = useState(false)
+
   const filmDetail = useSelector((state) => state.QuanLyRap.filmDetail)
-  // console.log('filmDetail', filmDetail)
+   console.log('filmDetail', filmDetail)
   const dispatch = useDispatch()
 
+  const handleModal = () => {
+    setIsShowModalTrailer(true)
+  }
+
+  const handleClose = () => {
+    setIsShowModalTrailer(false)
+  }
   useEffect(() => {
     let { id } = props.match.params
     dispatch(layThongTinChiTietPhim(id))
@@ -56,7 +66,12 @@ const Detail = (props) => {
                       </div>
                       <div className="detailContent__overplay"></div>
                       <div className="detailContent__play">
-                        <NavLink to="#">
+                        <NavLink
+                          to="#"
+                          onClick={() => {
+                            handleModal()
+                          }}
+                        >
                           <i className="fa fa-play"></i>
                         </NavLink>
                       </div>
@@ -199,7 +214,11 @@ const Detail = (props) => {
                           <div className="col-6">
                             <div className="row mb-2">
                               <p style={{ width: '30%' }}>Ngày công chiếu</p>
-                              <p style={{ width: '70%' }}>{moment(filmDetail.ngayKhoiChieu).format("hh:mm A")}</p>
+                              <p style={{ width: '70%' }}>
+                                {moment(filmDetail.ngayKhoiChieu).format(
+                                  'hh:mm A',
+                                )}
+                              </p>
                             </div>
                             <div className="row mb-2">
                               <p style={{ width: '30%' }}>Đạo diễn</p>
@@ -228,10 +247,10 @@ const Detail = (props) => {
                             </div>
                           </div>
                           <div className="col-6">
-                            <div className='row mb-2'>
+                            <div className="row mb-2">
                               <p style={{ width: '30%' }}>Nội dung</p>
                             </div>
-                            <div className='row mb-2'>
+                            <div className="row mb-2">
                               <p>{filmDetail.moTa}</p>
                             </div>
                           </div>
@@ -248,6 +267,7 @@ const Detail = (props) => {
           </div>
         </div>
       </CustomCard>
+      <ModalFilm handleClose={handleClose} show={isShowModalTrailer} />
     </div>
   )
 }

@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-
+import ModalFilm from '../ModalFilm/ModalFilm'
 const Film = (props) => {
   let { phim } = props
+  const [isShowModalTrailer, setIsShowModalTrailer] = useState(false)
+
+  const handleModal = () => {
+    setIsShowModalTrailer(true)
+  }
+
+  const handleClose = () => {
+    setIsShowModalTrailer(false)
+  }
   return (
-    <NavLink to={`/detail/${phim.maPhim}`}>
+    <>
       <div className="movieContent">
         <div className="movieContent__image">
           <div
@@ -16,26 +25,33 @@ const Film = (props) => {
           >
             <img src={phim.hinhAnh} className="img-fluid" alt={phim.hinhAnh} />
           </div>
-
           <div className="movieContent__overplay"></div>
           <div className="movieContent__play">
-            <a href={phim.trailer}>
+            <NavLink
+              to=""
+              onClick={() => {
+                handleModal()
+              }}
+            >
               <i className="fa fa-play"></i>
-            </a>
+            </NavLink>
           </div>
         </div>
         <div className="movieContent__name">
-          {phim.tenPhim.length > 10 ? (
-            <h3>{phim.tenPhim.substr(0, 20)}...</h3>
-          ) : (
-            <h3>{phim.tenPhim}</h3>
-          )}
+          <NavLink to={`/detail/${phim.maPhim}`}>
+            {phim.tenPhim.length > 10 ? (
+              <h3>{phim.tenPhim.substr(0, 20)}...</h3>
+            ) : (
+              <h3>{phim.tenPhim}</h3>
+            )}
+          </NavLink>
           <NavLink to={`/detail/${phim.maPhim}`}>
             <button className="button button--booking">Mua Vé</button>
           </NavLink>
         </div>
       </div>
-    </NavLink>
+      <ModalFilm handleClose={handleClose} show={isShowModalTrailer} />
+    </>
   )
 }
 

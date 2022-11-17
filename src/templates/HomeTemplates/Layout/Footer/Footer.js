@@ -45,7 +45,7 @@ const Footer = () => {
               <div className="footerContent__partner">
                 {arrHeThongRap?.map((htr, index) => {
                   return (
-                    <div className="footerContentPartner__logo">
+                    <div key={`footerContent__parner-${index}`} className="footerContentPartner__logo">
                       <NavLink to="#">
                         <img src={htr.logo} alt="footerLogo" />
                       </NavLink>

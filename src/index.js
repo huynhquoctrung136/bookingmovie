@@ -21,6 +21,8 @@ import './scss/main.scss'
 //store redux
 import { Provider } from 'react-redux'
 import { store } from './redux/configStore'
+//jq
+import $ from "jquery";
 
 ReactDOM.render(
   <Provider store={store}>

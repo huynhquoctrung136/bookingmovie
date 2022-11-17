@@ -1,9 +1,60 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import logoBrand from './assets/logo.svg'
+import _ from 'lodash'
+import { TOKEN, USER_LOGIN } from '../../../../util/settings/config'
+import { history } from '../../../../Layout'
 const Header = (props) => {
+  const { userLogin } = useSelector((state) => state.QuanLyNguoiDung)
+  // console.log('userLogin', userLogin);
 
-
+  const renderLogin = () => {
+    if (_.isEmpty(userLogin)) {
+      return (
+        <Fragment>
+          <li className="nav-item line">
+            <NavLink className="myNavBar__navLink" to="/login">
+              <i className="fa fa-user-circle"></i> Đăng nhập
+            </NavLink>
+          </li>
+          <li className="nav-item line">
+            <NavLink className="myNavBar__navLink" to="/register">
+              Đăng ký
+            </NavLink>
+          </li>
+        </Fragment>
+      )
+    } else {
+      return (
+        <Fragment>
+          <li className="nav-item line">
+            <NavLink className="myNavBar__navLink" to="/profile">
+              <img
+                src="https://picsum.photos/200"
+                style={{ width: '30px', height: '30px', borderRadius: '50%' }}
+              />{' '}
+              {userLogin.hoTen}
+            </NavLink>
+          </li>
+          <li className="nav-item line">
+            <NavLink
+              onClick={() => {
+                localStorage.removeItem(USER_LOGIN)
+                localStorage.removeItem(TOKEN)
+                history.goBack()
+                window.location.reload()
+              }}
+              className="myNavBar__navLink"
+              to="/"
+            >
+              Đăng Xuất
+            </NavLink>
+          </li>
+        </Fragment>
+      )
+    }
+  }
 
   return (
     <div className="header__content">
@@ -31,7 +82,7 @@ const Header = (props) => {
           <div className="collapse navbar-collapse" id="movieNavBar">
             <ul className="navbar-nav" style={{ marginLeft: 'auto' }}>
               <li className="nav-item line">
-                <NavLink  className="myNavBar__navLink" to="/">
+                <NavLink className="myNavBar__navLink" to="/">
                   Trang chủ
                 </NavLink>
               </li>
@@ -50,16 +101,7 @@ const Header = (props) => {
                   Liên hệ
                 </NavLink>
               </li>
-              <li className="nav-item line">
-                <NavLink className="myNavBar__navLink" to="/register">
-                  Đăng ký
-                </NavLink>
-              </li>
-              <li className="nav-item line">
-                <NavLink className="myNavBar__navLink" to="/login">
-                  Đăng nhập
-                </NavLink>
-              </li>
+              {renderLogin()}
             </ul>
           </div>
         </div>

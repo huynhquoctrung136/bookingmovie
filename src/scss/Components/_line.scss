@@ -1,15 +1,18 @@
-.line::after{
-    content: "";
-    width: 0;
-    height: 3px;
-    display: block;
-    background: linear-gradient(to right, $color-yellow-1, $color-yellow-2);
-    box-shadow: 0 0 20px 0 $color-yellow-1;
-    transition: 0.5s;
+/** @format */
+
+.line::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  display: block;
+  background: linear-gradient(to right, $color-yellow-1, $color-yellow-2);
+  box-shadow: 0 0 20px 0 $color-yellow-1;
+  transition: 0.5s;
 }
-.line:hover::after{
-    width: 100%;
+.line:hover::after {
+  width: 100%;
 }
-.line.active::after{
-    width: 100%;
+.line.active::after {
+  width: 100%;
 }
+
