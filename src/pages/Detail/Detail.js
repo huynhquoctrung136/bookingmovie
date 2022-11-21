@@ -13,7 +13,7 @@ const Detail = (props) => {
   const [isShowModalTrailer, setIsShowModalTrailer] = useState(false)
 
   const filmDetail = useSelector((state) => state.QuanLyRap.filmDetail)
-   console.log('filmDetail', filmDetail)
+  console.log('filmDetail', filmDetail)
   const dispatch = useDispatch()
 
   const handleModal = () => {
@@ -182,7 +182,7 @@ const Detail = (props) => {
                                               return (
                                                 <NavLink
                                                   key={`lichchieu-${index}`}
-                                                  to={`/checkout/${cumRap.maLichChieu}`}
+                                                  to={`/checkout/${lichChieu.maLichChieu}`}
                                                 >
                                                   <button className="btn--runningTimes">
                                                     {moment(
