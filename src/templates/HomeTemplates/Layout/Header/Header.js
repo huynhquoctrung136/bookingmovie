@@ -33,6 +33,7 @@ const Header = (props) => {
               <img
                 src="https://picsum.photos/200"
                 style={{ width: '30px', height: '30px', borderRadius: '50%' }}
+                alt="profile"
               />{' '}
               {userLogin.hoTen}
             </NavLink>

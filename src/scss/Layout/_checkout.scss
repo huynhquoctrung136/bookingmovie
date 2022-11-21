@@ -1,0 +1,109 @@
+/** @format */
+.detailBooking{
+    .bookingTicket__content{
+        width: 100%;
+        height: 100%;
+        padding: $p-0;
+        // justify-content: space-between;
+        .bookingTicketContent__info{
+            // display: flex;
+            // justify-content: space-between;
+            .bookingTicket__tabs{ 
+                i{
+                    width: 50px;
+                    height: 50px;
+                    text-align: center;
+                    border-radius: 50%;
+                    border: 1px solid $color-black-2;
+                    line-height: 50px;
+                    @include styleText($color-black-2,$fs-3,$fw-3);
+                }
+                .bookingTicketTabs__title{
+                    text-transform: uppercase;
+                    @include styleText($color-black-2,$fs-9,$fw-5);
+                }
+               .bookingSeatContent{
+                    .bookingSeatContent__info{
+                        .bookingCinema__name{
+                            img{
+                                width: 50px;
+                                height: 50px;
+                            }
+                            .bookingCinemaName__des{
+                                padding-top: $p-2;
+                                padding-left: $p-3;
+                                p:first-child{
+                                    @include styleText($color-blue-3,$fs-0,$fw-5);
+                                    margin-bottom: 0px;
+                                }
+                                p:last-child{
+                                    @include styleText($color-black-6,$fs-10 + 1,$fw-5);
+                                }
+                            }
+                        }
+                    }
+                    .bookingSeatContent__seat{
+                      width: 100%;
+                    }
+               } 
+            }
+        }
+    }
+    .detailBooking__content {
+        border-left: 1px solid $color-black-3;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        padding: 0px 8%;
+        overflow: auto;
+        position: relative;
+        box-shadow: rgb(0 0 0 / 30%) 0px 0px 15px;
+        flex-direction: column;
+        background-color: rgb(255, 255, 255);
+        user-select: none;
+        justify-content: space-between;
+        overflow: hidden;
+        .detailBookingContent__price {
+          color: #44c020;
+          font-size: 41px;
+          text-align: center;
+          font-weight: 500;
+          line-height: 60px;
+          border-bottom: 1px dotted $color-black-0;
+        }
+        .detailBookingContent__des {
+          border-bottom: 1px dotted $color-black-0;
+          .detailBookingContent__name {
+            font-weight: bold;
+            text-transform: capitalize;
+          }
+        }
+        .detailBookingContent__InfoBooking {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px dotted $color-black-0;
+          span {
+            @include styleText($color-red, $fs-2, $fw-0);
+            gap: 10%;
+          }
+          p {
+            flex: 0 0 82px;
+            text-align: right;
+            @include styleText($color-blue-3, $fs-2, $fw-5);
+          }
+        }
+      
+        .detailBookingContent__form {
+          border-bottom: 1px dotted $color-black-0;
+          span {
+            @include styleText($color-gray-9, $fs-10 + 1, $fw-0);
+          }
+        }
+        .detailBooking__button {
+          position: fixed;
+          bottom: 0px;
+          width: 22%;
+        }
+      }
+}
+

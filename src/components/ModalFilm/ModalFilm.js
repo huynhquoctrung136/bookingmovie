@@ -1,9 +1,9 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 const ModalFilm = (props) => {
   const { show, handleClose } = props
-  const filmDetail = useSelector((state) => state.QuanLyRap.filmDetail)
+  // const filmDetail = useSelector((state) => state.QuanLyRap.filmDetail)
   return (
     <Modal dialogClassName="modal-180w" show={show} onHide={handleClose} backdrop="static" keyboard={false}>
       <Modal.Header closeButton></Modal.Header>
@@ -16,7 +16,7 @@ const ModalFilm = (props) => {
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </Modal.Body>

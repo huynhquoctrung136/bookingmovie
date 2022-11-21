@@ -12,7 +12,9 @@ import UserTemplates from './templates/UserTemplates/UserTemplates'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Profile from './pages/Profile/Profile'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
+import CheckoutTemplates from './templates/CheckoutTemplates/CheckoutTemplates'
+import Checkout from './pages/Checkout/Checkout'
 export const history = createBrowserHistory()
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
           <HomeTemplates path="/profile" exact Component={Profile} />
           <UserTemplates path="/login" exact Component={Login} />
           <UserTemplates path="/register" exact Component={Register} />
+          <CheckoutTemplates path="/checkout/:id" exact Component={Checkout} />
           <HomeTemplates path="/" exact Component={Home} />
         </Switch>
       </Router>

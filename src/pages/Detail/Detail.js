@@ -182,7 +182,7 @@ const Detail = (props) => {
                                               return (
                                                 <NavLink
                                                   key={`lichchieu-${index}`}
-                                                  to="#"
+                                                  to={`/checkout/${cumRap.maLichChieu}`}
                                                 >
                                                   <button className="btn--runningTimes">
                                                     {moment(

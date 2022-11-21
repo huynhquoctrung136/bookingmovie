@@ -2,11 +2,11 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logoTix from './logoTix.png'
 import { useFormik } from 'formik'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { dangNhapAction } from '../../redux/actions/QuanLyNguoiDungAction'
 const Login = () => {
   const dispatch = useDispatch();
-  const {userLogin}=useSelector(state=>state.QuanLyNguoiDung);
+  // const {userLogin}=useSelector(state=>state.QuanLyNguoiDung);
   // console.log("userLogin", userLogin);
   const formik = useFormik({
     initialValues: {

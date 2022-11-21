@@ -15,6 +15,7 @@
 @import "Layout/footer";
 @import "Layout/home";
 @import "Layout/detail";
+@import "Layout/checkout";
 //============================== Components ==============================================//
 @import "Components/button";
 @import "Components/line";
@@ -25,5 +26,6 @@
 @import "Components/register";
 @import "Components/modal";
 //============================== Pages ==============================================//
-@import "Pages/UserTemples/UserTemples.scss"
+@import "Pages/UserTemples/UserTemples.scss";
+@import "Pages/CheckoutTemplates/CheckoutTemplates.scss";
 //============================== Themes ==============================================//

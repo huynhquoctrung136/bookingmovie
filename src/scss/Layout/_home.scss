@@ -21,6 +21,7 @@
   }
 }
 .showTime {
+  overflow: auto;
   background-color: $color-white-0;
   .showTime__title {
     @include styleText($color-yellow-1, $fs-2, $fw-0);
@@ -42,6 +43,7 @@
   .cumRap__content {
     display: flex;
     border-bottom: 1px solid $color-black-3;
+    
     img {
       width: 50px;
       height: 50px;

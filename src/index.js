@@ -22,7 +22,7 @@ import './scss/main.scss'
 import { Provider } from 'react-redux'
 import { store } from './redux/configStore'
 //jq
-import $ from "jquery";
+// import $ from "jquery";
 
 ReactDOM.render(
   <Provider store={store}>
