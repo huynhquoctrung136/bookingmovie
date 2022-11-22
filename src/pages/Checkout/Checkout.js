@@ -163,26 +163,24 @@ const Checkout = (props) => {
                                           <button className={`ghe`}>00</button>
                                         </td>
                                         <td>
-                                          <button className={`ghe gheDangDat`}>
-                                            00
-                                          </button>
+                                          <button
+                                            className={`ghe gheDangDat`}
+                                          ></button>
                                         </td>
                                         <td>
-                                          <button className={`ghe gheVip`}>
-                                            00
-                                          </button>
+                                          <button
+                                            className={`ghe gheVip`}
+                                          ></button>
                                         </td>
                                         <td>
-                                          <button className={`ghe gheDaDat`}>
-                                            00
-                                          </button>
+                                          <button
+                                            className={`ghe gheDaDat`}
+                                          ></button>
                                         </td>
                                         <td>
                                           <button
                                             className={`ghe gheDaDuocDat`}
-                                          >
-                                            00
-                                          </button>
+                                          ></button>
                                         </td>
                                       </tr>
                                     </tbody>
