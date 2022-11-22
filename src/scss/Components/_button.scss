@@ -136,7 +136,7 @@
   margin-bottom: 20px;
   width: 100%;
   transition: 0.5s;
-  &:hover{
+  &:hover {
     @include hoverButton($color-red, $color-white-0, $border-0);
   }
 }
@@ -154,8 +154,7 @@
   margin-bottom: 20px;
   width: 100%;
   transition: 0.5s;
-  &:hover{
+  &:hover {
     @include hoverButton($color-blue-2, $color-white-0, $border-0);
   }
 }
-

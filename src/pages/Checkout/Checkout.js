@@ -1,19 +1,90 @@
-import React, { useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Tabs } from 'antd'
 import logoPayment from './payment.png'
-import Screen from "./screen.png"
+import Screen from './screen.png'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  datVeAction,
+  layChiTietPhongVeAction,
+} from '../../redux/actions/QuanLyDatVeAction'
+import { layDanhSachCumRap } from '../../redux/actions/QuanLyRapAction'
+import { CloseOutlined, UserOutlined } from '@ant-design/icons'
+import { DAT_VE } from '../../redux/actions/types/QuanLyDatVeTypes'
+import _ from 'lodash'
+import { ThongTinDatVe } from '../../core/models/ThongTinDatVe'
+import { toast } from 'react-toastify'
 const Checkout = (props) => {
   const [tabPosition, setTabPosition] = useState('right')
+  const { chiTietPhongVe, danhSachGheDangDat } = useSelector(
+    (state) => state.QuanLyDatVe,
+  )
+  const { userLogin } = useSelector((state) => state.QuanLyNguoiDung)
+  const { heThongRapChieu } = useSelector((state) => state.QuanLyRap)
+  // console.log('heThongRapChieu', heThongRapChieu)
+  // console.log('userLogin', userLogin)
+  const dispatch = useDispatch()
+  // console.log('chiTietPhongVe', chiTietPhongVe)
+
+  useEffect(() => {
+    dispatch(layChiTietPhongVeAction(props.match.params.id))
+    dispatch(layDanhSachCumRap())
+  }, [])
+
   const changeTabPosition = (e) => {
     setTabPosition(e.target.value)
+  }
+
+  const { thongTinPhim, danhSachGhe } = chiTietPhongVe
+
+  const renderGhe = () => {
+    return danhSachGhe?.map((ghe, index) => {
+      let classGheVip = ghe.loaiGhe === 'Vip' ? 'gheVip' : ''
+      let classGheDaDat = ghe.daDat === true ? 'gheDaDat' : ''
+      let indexGheDD = danhSachGheDangDat.findIndex(
+        (gheDD) => gheDD.maGhe === ghe.maGhe,
+      )
+      let classGheDaDuocDat = ''
+      if (userLogin.taiKhoan === ghe.taiKhoanNguoiDat) {
+        classGheDaDuocDat = 'gheDaDuocDat'
+      }
+
+      if (indexGheDD !== -1) {
+        classGheDaDat = 'gheDangDat'
+      }
+      return (
+        <Fragment key={`danhSachGhe-${index}`}>
+          <button
+            disabled={ghe.daDat}
+            className={`ghe ${classGheDaDuocDat} ${classGheVip} ${classGheDaDat} `}
+            onClick={() => {
+              dispatch({
+                type: DAT_VE,
+                gheDuocChon: ghe,
+              })
+            }}
+          >
+            {ghe.daDat ? (
+              classGheDaDuocDat !== '' ? (
+                <UserOutlined />
+              ) : (
+                <CloseOutlined />
+              )
+            ) : (
+              ghe.stt
+            )}
+          </button>
+          {(index + 1) % 16 === 0 ? <br /> : ''}
+        </Fragment>
+      )
+    })
   }
   return (
     <div
       style={{
-        backgroundImage: `url(https://movie-booking-project.vercel.app/img/bgAuth.jpg)`,
+        backgroundImage: `url(${thongTinPhim.hinhAnh})`,
         backgroundSize: '100%',
-        backgroundPosition: 'center',
+        backgroundPosition: 'cover',
         minHeight: '100vh',
       }}
     >
@@ -52,17 +123,72 @@ const Checkout = (props) => {
                                   alt=""
                                 />
                                 <div className="bookingCinemaName__des">
-                                  <p>BHD Star Cineplex 3/2</p>
-                                  <p>Thứ tư - 02:05 - Rạp 1</p>
+                                  <p>{thongTinPhim.tenCumRap}</p>
+                                  <p>
+                                    {thongTinPhim.ngayChieu} -{' '}
+                                    {thongTinPhim.gioChieu} -{' '}
+                                    {thongTinPhim.tenRap}
+                                  </p>
                                 </div>
                               </div>
                             </div>
 
-                            <div className='bookingSeatContent__seat'>
-                                <div className='bookingSeatContent__screen'>
-                                    <img className='img-fluid' src={Screen} alt=''/>
+                            <div className="bookingSeatContent__seat">
+                              <div className="bookingSeatContent__screen">
+                                <img
+                                  className="img-fluid"
+                                  src={Screen}
+                                  alt="screen.png"
+                                />
+                              </div>
+                              <div className="bookingSeatContent__select">
+                                {renderGhe()}
+                              </div>
+
+                              <div className="bookingSeatContent__infoSeat mt-4">
+                                <div>
+                                  <table className="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Ghế chưa đặt</th>
+                                        <th scope="col">Ghế đang đặt</th>
+                                        <th scope="col">Ghế Vip</th>
+                                        <th scope="col">Ghế đã đặt</th>
+                                        <th scope="col">Ghế mình đặt</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <button className={`ghe`}>00</button>
+                                        </td>
+                                        <td>
+                                          <button className={`ghe gheDangDat`}>
+                                            00
+                                          </button>
+                                        </td>
+                                        <td>
+                                          <button className={`ghe gheVip`}>
+                                            00
+                                          </button>
+                                        </td>
+                                        <td>
+                                          <button className={`ghe gheDaDat`}>
+                                            00
+                                          </button>
+                                        </td>
+                                        <td>
+                                          <button
+                                            className={`ghe gheDaDuocDat`}
+                                          >
+                                            00
+                                          </button>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </div>
-                                <div className='bookingSeatContent__select'></div>
+                              </div>
                             </div>
                           </div>
                         </Tabs.TabPane>
@@ -115,17 +241,21 @@ const Checkout = (props) => {
                                   backgroundImage: `https://i.pravatar.cc/300?u=nguyenvanteo2506`,
                                   backgroundRepeat: 'no-repeat',
                                   backgroundSize: 'cover',
-                                  textAlign:"center"
+                                  textAlign: 'center',
                                 }}
                               >
                                 <img
-                                  style={{ width: '50px', height:"50px", borderRadius:"50%"}}
-                                  src={`https://i.pravatar.cc/300?u=nguyenvanteo2506`}
+                                  style={{
+                                    width: '50px',
+                                    height: '50px',
+                                    borderRadius: '50%',
+                                  }}
+                                  src={`https://picsum.photos/200`}
                                   alt=""
                                 />
                               </div>
                               <p className="bookingTicketTabs__title">
-                                NGUYỄN VĂN TEO
+                                {userLogin.hoTen}
                               </p>
                             </NavLink>
                           }
@@ -140,26 +270,64 @@ const Checkout = (props) => {
             <div className="col-4">
               <div className="detailBooking__content">
                 <div>
-                  <p className="detailBookingContent__price">0 đ</p>
+                  <p className="detailBookingContent__price">
+                    {danhSachGheDangDat
+                      .reduce((tongTien, ghe) => {
+                        return (tongTien += ghe.giaVe)
+                      }, 0)
+                      .toLocaleString()}{' '}
+                    đ
+                  </p>
                   <div className="detailBookingContent__des">
-                    <p className="detailBookingContent__name">Nghề Siêu dễ</p>
-                    <p>BHD Star Cineplex - 3/2</p>
-                    <p>Thứ tư 25/05/2022 - 02:05 - Rạp 1</p>
+                    <p className="detailBookingContent__name">
+                      {thongTinPhim.tenPhim}
+                    </p>
+                    <p>{thongTinPhim.tenCumRap}</p>
+                    <p>
+                      {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu} -{' '}
+                      {thongTinPhim.tenRap}
+                    </p>
                   </div>
                   <div className="detailBookingContent__InfoBooking">
-                    <span>Ghế</span>
+                    <span>Ghế </span>
+                    {_.sortBy(danhSachGheDangDat, ['stt']).map(
+                      (gheDD, index) => {
+                        return (
+                          <Fragment>
+                            <span key={`gheDD-${index}`}>{gheDD.stt}</span>
+                          </Fragment>
+                        )
+                      },
+                    )}
                     <p className="detailBookingContentInfoBooking__price">
-                      0 đ
+                      {danhSachGheDangDat
+                        .reduce((tongTien, ghe) => {
+                          return (tongTien += ghe.giaVe)
+                        }, 0)
+                        .toLocaleString()}{' '}
+                      đ
                     </p>
                   </div>
                   <div className="detailBookingContent__form">
                     <span>Email</span>
-                    <p>huynhquoctrung271@gmail.com</p>
+                    <p>{userLogin.email}</p>
                   </div>
                 </div>
-                <NavLink to="" className="detailBooking__button nav-link">
-                  <button className="button button--booking">Đặt Vé</button>
-                </NavLink>
+                <div className="detailBooking__button">
+                  <button
+                    onClick={() => {
+                      const thongTinDatVe = new ThongTinDatVe()
+                      thongTinDatVe.maLichChieu = props.match.params.id
+                      thongTinDatVe.danhSachVe = danhSachGheDangDat
+                      // console.log(thongTinDatVe)
+                      dispatch(datVeAction(thongTinDatVe))
+                      toast.success('Đặt Vé Thành Công!')
+                    }}
+                    className="button button--booking"
+                  >
+                    Đặt Vé
+                  </button>
+                </div>
               </div>
             </div>
           </div>

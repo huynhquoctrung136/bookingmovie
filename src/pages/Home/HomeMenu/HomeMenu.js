@@ -18,10 +18,9 @@ const HomeMenu = (props) => {
                 backgroundImage: `${heThongRap.logo}`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-               
               }}
             >
-               <img
+              <img
                 style={{ width: '50px' }}
                 src={heThongRap.logo}
                 alt={heThongRap.logo}
@@ -94,14 +93,16 @@ const HomeMenu = (props) => {
                                   ?.slice(0, 8)
                                   .map((lichChieu, index) => {
                                     return (
-                                      <button
-                                        key={`lichchieu-${index}`}
-                                        className="btn--runningTimes mt-2"
-                                      >
-                                        {moment(
-                                          lichChieu.ngayChieuGioChieu,
-                                        ).format('hh:mm A')}
-                                      </button>
+                                      <NavLink to="#">
+                                        <button
+                                          key={`lichchieu-${index}`}
+                                          className="btn--runningTimes mt-2"
+                                        >
+                                          {moment(
+                                            lichChieu.ngayChieuGioChieu,
+                                          ).format('hh:mm A')}
+                                        </button>
+                                      </NavLink>
                                     )
                                   })}
                               </div>

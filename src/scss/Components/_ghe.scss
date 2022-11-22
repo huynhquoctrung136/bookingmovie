@@ -1,0 +1,35 @@
+/** @format */
+
+.bookingSeatContent__select {
+  padding: 0 4%;
+  text-align: center;
+  margin: 0 center;
+}
+// Ghế thường
+.ghe {
+  width: 30px;
+  height: 30px;
+  color: $color-white-0;
+  @include styleGhe($color-black-7, $border-0, $boder-radius);
+  cursor: pointer;
+  margin: $m-0;
+}
+
+.gheDaDat {
+  @include styleGhe($color-red, $border-0, $boder-radius);
+  cursor: no-drop;
+}
+.gheDangDat {
+  @include styleGhe($color-blue-3, $border-0, $boder-radius);
+  cursor: no-drop;
+}
+.gheVip {
+  @include styleGhe($color-pink, $border-0, $boder-radius);
+  cursor: no-drop;
+}
+.gheDaDuocDat{
+  @include styleGhe($color-white-0, $border-0, $boder-radius);
+  -webkit-box-shadow: -1px 2px 18px -6px $color-yellow-2; 
+  box-shadow: -1px 2px 18px -6px $color-yellow-2;
+  color: $color-yellow-2;
+}

@@ -28,9 +28,14 @@
   border: 1px solid $border-hover;
 }
 
-
-@mixin activeButton($color-active,$bg-active,$boder-active) {
+@mixin activeButton($color-active, $bg-active, $boder-active) {
   color: $color-active;
   background-color: $bg-active;
   border: $boder-active;
+}
+
+@mixin styleGhe($bg-color, $boder,$borderRadius) {
+  background: $bg-color;
+  border: $boder;
+  border-radius: $borderRadius;
 }
