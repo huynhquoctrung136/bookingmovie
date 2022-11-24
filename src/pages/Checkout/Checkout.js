@@ -14,14 +14,24 @@ import { DAT_VE } from '../../redux/actions/types/QuanLyDatVeTypes'
 import _ from 'lodash'
 import { ThongTinDatVe } from '../../core/models/ThongTinDatVe'
 import { toast } from 'react-toastify'
+import { layThongTinNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction'
+import moment from 'moment'
+
+
+
 const Checkout = (props) => {
   const [tabPosition, setTabPosition] = useState('right')
   const { chiTietPhongVe, danhSachGheDangDat } = useSelector(
     (state) => state.QuanLyDatVe,
   )
-  const { userLogin } = useSelector((state) => state.QuanLyNguoiDung)
+  const { userLogin, thongTinNguoiDung } = useSelector(
+    (state) => state.QuanLyNguoiDung,
+  )
   const { heThongRapChieu } = useSelector((state) => state.QuanLyRap)
-  // console.log('heThongRapChieu', heThongRapChieu)
+
+
+  const [showBookingTiket,setshowBookingTiket]=useState(false);
+  // console.log('thongTinNguoiDung', thongTinNguoiDung)
   // console.log('userLogin', userLogin)
   const dispatch = useDispatch()
   // console.log('chiTietPhongVe', chiTietPhongVe)
@@ -29,6 +39,7 @@ const Checkout = (props) => {
   useEffect(() => {
     dispatch(layChiTietPhongVeAction(props.match.params.id))
     dispatch(layDanhSachCumRap())
+    dispatch(layThongTinNguoiDungAction())
   }, [])
 
   const changeTabPosition = (e) => {
@@ -79,6 +90,54 @@ const Checkout = (props) => {
       )
     })
   }
+
+  const renderTicketItem = () => {
+    return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
+      const seats = _.first(ticket.danhSachGhe)
+      return (
+        <div
+          key={`ticket-${index}`}
+          className="col-4 historyBookingTicket__col"
+        >
+          <div className="historyBookingTicket__item">
+            <img
+              src={`${ticket.hinhAnh}`}
+              alt=""
+              className="img-fluid"
+            />
+            <h3>{ticket.tenPhim}</h3>
+            <span>
+              Giờ Chiếu: {moment(ticket.ngayDat).format('hh:mm A')} -{' '}
+              {moment(ticket.ngayDat).format('DD-MM-YYYY')}
+            </span>
+            <p>
+              Địa điểm: <span>{seats.tenHeThongRap}</span>
+            </p>
+            <p>
+              <span>
+                Tên rap: {seats.tenCumRap} - Ghế{' '}
+                {ticket.danhSachGhe.map((ghe, index) => {
+                  return (
+                    <p
+                      className="text-danger"
+                      style={{ marginLeft: '5px', display: 'inline-block' }}
+                      key={`ghe-${index}`}
+                    >
+                      {ghe.tenGhe.length > 10 ? (
+                        <span>{ghe.tenGhe.substr(0, 5)}...</span>
+                      ) : (
+                        <span>{ghe.tenGhe}</span>
+                      )}
+                    </p>
+                  )
+                })}
+              </span>
+            </p>
+          </div>
+        </div>
+      )
+    })
+  }
   return (
     <div
       style={{
@@ -88,7 +147,7 @@ const Checkout = (props) => {
         minHeight: '100vh',
       }}
     >
-      <div className="container">
+      <div className="container-fluid">
         <div className="detailBooking">
           <div className="row">
             <div className="col-8">
@@ -209,7 +268,21 @@ const Checkout = (props) => {
                           }
                           key="2"
                         >
-                          Content of Tab Pane 2
+                          <div className="historyBookingTicket">
+                            <div className="historyBookingTicket__title">
+                              <h2>LỊCH SỬ ĐẶT VÉ</h2>
+                              <p>
+                                Hãy xem thông tin địa và thời gian để xem phim
+                                vui vẻ bạn nhé
+                              </p>
+                            </div>
+
+                            <div className="historyBookingTicket__content">
+                              <div className="container">
+                                <div className="row">{renderTicketItem()}</div>
+                              </div>
+                            </div>
+                          </div>
                         </Tabs.TabPane>
                         <Tabs.TabPane
                           tab={
