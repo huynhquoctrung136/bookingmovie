@@ -1,7 +1,11 @@
 import { quanLyNguoiDungService } from '../../services/QuanLyNguoiDung'
-import { DANG_NHAP_ACTION, SET_THONG_TIN_NGUOI_DUNG } from './types/QuanLyNguoiDungType'
+import {
+  DANG_NHAP_ACTION,
+  SET_THONG_TIN_NGUOI_DUNG,
+} from './types/QuanLyNguoiDungType'
 import { toast } from 'react-toastify'
 import { history } from '../../Layout'
+import { displayLoadingAction, hideLoadingAction } from './LoadingAction'
 export const dangNhapAction = (thongTinDangNhap) => {
   return async (dispatch) => {
     try {
@@ -22,7 +26,6 @@ export const dangNhapAction = (thongTinDangNhap) => {
     }
   }
 }
-
 
 export const layThongTinNguoiDungAction = () => {
   return async (dispatch) => {

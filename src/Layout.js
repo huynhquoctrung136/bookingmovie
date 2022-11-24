@@ -15,10 +15,12 @@ import Profile from './pages/Profile/Profile'
 import { ToastContainer } from 'react-toastify'
 import CheckoutTemplates from './templates/CheckoutTemplates/CheckoutTemplates'
 import Checkout from './pages/Checkout/Checkout'
+import Loading from './components/Loading/Loading'
 export const history = createBrowserHistory()
 function App() {
   return (
     <>
+      <Loading />
       <Router history={history}>
         <Switch>
           <HomeTemplates path="/home" exact Component={Home} />

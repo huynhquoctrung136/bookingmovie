@@ -11,7 +11,10 @@ import {
 } from '../../redux/actions/QuanLyDatVeAction'
 import { layDanhSachCumRap } from '../../redux/actions/QuanLyRapAction'
 import { CloseOutlined, UserOutlined } from '@ant-design/icons'
-import { DAT_VE } from '../../redux/actions/types/QuanLyDatVeTypes'
+import {
+  CHANGE_TAB_ACTIVE,
+  DAT_VE,
+} from '../../redux/actions/types/QuanLyDatVeTypes'
 import _ from 'lodash'
 import { ThongTinDatVe } from '../../core/models/ThongTinDatVe'
 import { toast } from 'react-toastify'
@@ -25,10 +28,11 @@ const Checkout = (props) => {
   const { userLogin, thongTinNguoiDung } = useSelector(
     (state) => state.QuanLyNguoiDung,
   )
+
   // const { heThongRapChieu } = useSelector((state) => state.QuanLyRap)
 
   // console.log('thongTinNguoiDung', thongTinNguoiDung)
-  // console.log('userLogin', userLogin)
+  console.log('userLogin', userLogin)
   const dispatch = useDispatch()
   // console.log('chiTietPhongVe', chiTietPhongVe)
 
@@ -201,6 +205,10 @@ const Checkout = (props) => {
               <span>Email</span>
               <p>{userLogin.email}</p>
             </div>
+            <div className="detailBookingContent__form">
+              <span>Số Điện Thoại</span>
+              <p>{userLogin.soDT}</p>
+            </div>
           </div>
           <div className="detailBooking__button">
             <button
@@ -286,13 +294,17 @@ const KetQuaDatVe = () => {
   )
 }
 
-export default function (props) {
+const CheckoutTab = (props) => {
   const [tabPosition, setTabPosition] = useState('right')
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDung)
+  const { tabActive } = useSelector((state) => state.QuanLyDatVe)
+  console.log('tabActive', tabActive)
+  const dispatch = useDispatch()
   const { chiTietPhongVe, danhSachGheDangDat } = useSelector(
     (state) => state.QuanLyDatVe,
   )
   const { thongTinPhim, danhSachGhe } = chiTietPhongVe
+
   const changeTabPosition = (e) => {
     setTabPosition(e.target.value)
   }
@@ -307,7 +319,7 @@ export default function (props) {
     >
       <div className="detailBooking container">
         <div className="detailBooking__tabs">
-          <Tabs defaultActiveKey="1">
+          <Tabs defaultActiveKey="1" activeKey={tabActive.toString()}>
             <Tabs.TabPane
               tab={
                 <div
@@ -325,6 +337,12 @@ export default function (props) {
                 </div>
               }
               key="1"
+              onClick={() => {
+                dispatch({
+                  type: CHANGE_TAB_ACTIVE,
+                  number: 1,
+                })
+              }}
             >
               <Checkout {...props} />
             </Tabs.TabPane>
@@ -344,6 +362,12 @@ export default function (props) {
                 </div>
               }
               key="2"
+              onClick={() => {
+                dispatch({
+                  type: CHANGE_TAB_ACTIVE,
+                  number: 2,
+                })
+              }}
             >
               <KetQuaDatVe {...props} />
             </Tabs.TabPane>
@@ -397,3 +421,4 @@ export default function (props) {
     </div>
   )
 }
+export default CheckoutTab

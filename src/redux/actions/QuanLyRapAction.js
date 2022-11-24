@@ -1,30 +1,35 @@
 import { quanLyRapService } from '../../services/QuanLyRapService'
+import { displayLoadingAction, hideLoadingAction } from './LoadingAction'
 import {
   SET_CHI_TIET_PHIM,
   SET_HE_THONG_RAP_CHIEU,
   SET_THONG_TIN_HE_THONG_RAP,
 } from './types/QuanLyRapType'
 
-export const layThongTinHeThongRap=()=>{
-  return async(dispatch)=>{
+export const layThongTinHeThongRap = () => {
+  return async (dispatch) => {
     try {
-      const result=await quanLyRapService.layThongTinHeThongRap()
-      if(result.status===200){
+      dispatch(displayLoadingAction())
+      const result = await quanLyRapService.layThongTinHeThongRap()
+
+      if (result.status === 200) {
         dispatch({
-          type:SET_THONG_TIN_HE_THONG_RAP,
+          type: SET_THONG_TIN_HE_THONG_RAP,
           danhSachRap: result.data.content,
         })
       }
+      dispatch(hideLoadingAction())
     } catch (errors) {
       console.log('errors', errors.response?.data)
+      dispatch(hideLoadingAction())
     }
   }
 }
 
-
 export const layDanhSachCumRap = () => {
   return async (dispatch) => {
     try {
+      dispatch(displayLoadingAction())
       //Sử dụng tham số thamSo
       const result = await quanLyRapService.layDanhSachHeThongRap()
 
@@ -34,8 +39,10 @@ export const layDanhSachCumRap = () => {
           heThongRapChieu: result.data.content,
         })
       }
+      dispatch(hideLoadingAction())
     } catch (errors) {
       console.log('errors', errors.response?.data)
+      dispatch(hideLoadingAction())
     }
   }
 }
