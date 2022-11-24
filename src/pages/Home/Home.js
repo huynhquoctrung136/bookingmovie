@@ -8,7 +8,8 @@ import HomeMenu from './HomeMenu/HomeMenu'
 const Home = (props) => {
   const { arrPhim } = useSelector((state) => state.QuanLyPhim)
   const { heThongRapChieu } = useSelector((state) => state.QuanLyRap)
-  // console.log('heThongRapChieu', heThongRapChieu)
+
+  console.log('heThongRapChieu', heThongRapChieu)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(layDanhSachPhim())

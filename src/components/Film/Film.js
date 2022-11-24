@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import ModalFilm from '../ModalFilm/ModalFilm'
+import { CaretRightOutlined } from '@ant-design/icons'
 const Film = (props) => {
   let { phim } = props
   const [isShowModalTrailer, setIsShowModalTrailer] = useState(false)
@@ -33,7 +34,7 @@ const Film = (props) => {
                 handleModal()
               }}
             >
-              <i className="fa fa-play"></i>
+              <CaretRightOutlined className="movieIcon__play" />
             </NavLink>
           </div>
         </div>

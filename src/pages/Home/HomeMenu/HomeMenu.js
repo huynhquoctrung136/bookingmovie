@@ -7,6 +7,7 @@ const { TabPane } = Tabs
 const HomeMenu = (props) => {
   const [tabPosition, setTabPosition] = useState('left')
   let { heThongRapChieu } = props
+  console.log(heThongRapChieu)
 
   const renderHeThongRap = () => {
     return heThongRapChieu?.map((heThongRap, index) => {
@@ -78,7 +79,10 @@ const HomeMenu = (props) => {
                           <h3 className="showTimeRow__name">{phim.tenPhim}</h3>
                           <p>{/* Mô tả */}</p>
                           <p>
-                            <NavLink className="showTimeRow__NavLink" to="#">
+                            <NavLink
+                              className="showTimeRow__NavLink"
+                              to={`/detail/${phim.maPhim}`}
+                            >
                               Full Detail <i className="fa fa-angle-right"></i>
                             </NavLink>
                           </p>
@@ -93,7 +97,9 @@ const HomeMenu = (props) => {
                                   ?.slice(0, 8)
                                   .map((lichChieu, index) => {
                                     return (
-                                      <NavLink to="#">
+                                      <NavLink
+                                        to={`/checkout/${lichChieu.maLichChieu}`}
+                                      >
                                         <button
                                           key={`lichchieu-${index}`}
                                           className="btn--runningTimes mt-2"

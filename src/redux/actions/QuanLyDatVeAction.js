@@ -34,17 +34,16 @@ export const datVeAction = (thongTinDatVe = new ThongTinDatVe()) => {
     try {
       dispatch(displayLoadingAction())
       const result = await quanLyDatVeService.datVe(thongTinDatVe)
-      console.log(('result', result.data.content))
-
-      //Đặt vé thành cộng gọi api load lại phòng vé
-      await dispatch(layChiTietPhongVeAction(thongTinDatVe.maLichChieu))
-      await dispatch({
-        type: DAT_VE_HOAN_TAT,
-      })
-      dispatch({
-        type:CHUYEN_TAB
-      })
-
+      if (result.data.statusCode === 200) {
+        //Đặt vé thành cộng gọi api load lại phòng vé
+        await dispatch(layChiTietPhongVeAction(thongTinDatVe.maLichChieu))
+        await dispatch({
+          type: DAT_VE_HOAN_TAT,
+        })
+        dispatch({
+          type: CHUYEN_TAB,
+        })
+      }
       dispatch(hideLoadingAction())
     } catch (error) {
       console.log('error: ', error)

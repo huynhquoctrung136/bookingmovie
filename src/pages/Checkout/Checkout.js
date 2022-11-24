@@ -10,7 +10,13 @@ import {
   layChiTietPhongVeAction,
 } from '../../redux/actions/QuanLyDatVeAction'
 import { layDanhSachCumRap } from '../../redux/actions/QuanLyRapAction'
-import { CloseOutlined, UserOutlined } from '@ant-design/icons'
+import {
+  CloseOutlined,
+  UserOutlined,
+  CreditCardOutlined,
+  CheckCircleOutlined,
+  HomeOutlined,
+} from '@ant-design/icons'
 import {
   CHANGE_TAB_ACTIVE,
   DAT_VE,
@@ -330,7 +336,7 @@ const CheckoutTab = (props) => {
                     textAlign: 'center',
                   }}
                 >
-                  <i className="fa fa-credit-card"></i>
+                  <CreditCardOutlined className="creditCard__Icon" />
                   <p className="bookingTicketTabs__title">
                     CHỌN GHẾ VÀ THANH TOÁN
                   </p>
@@ -357,7 +363,7 @@ const CheckoutTab = (props) => {
                     textAlign: 'center',
                   }}
                 >
-                  <i className="fa fa-check"></i>
+                  <CheckCircleOutlined className="checkCircle__Icon" />
                   <p className="bookingTicketTabs__title">KẾT QUẢ ĐẶT VÉ</p>
                 </div>
               }
@@ -382,7 +388,8 @@ const CheckoutTab = (props) => {
                       textAlign: 'center',
                     }}
                   >
-                    <i className="fa fa-home"></i>
+                    <HomeOutlined className="home__Icon" />
+
                     <p className="bookingTicketTabs__title">Trang Chủ</p>
                   </div>
                 </NavLink>

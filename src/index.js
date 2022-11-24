@@ -7,8 +7,8 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap'
-//Font-Awesome
-import '@fortawesome/fontawesome-free/css/all.min.css'
+// // //Font-Awesome
+// import '@fortawesome/fontawesome-free/css/all.min.css'
 //React-Toastify
 import 'react-toastify/dist/ReactToastify.css'
 //ant

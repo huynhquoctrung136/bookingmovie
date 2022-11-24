@@ -27,7 +27,7 @@
       a {
         color: $color-white-0;
         text-decoration: none;
-        i {
+        .movieIcon__play {
           width: 80px;
           height: 80px;
           border: 2px solid $color-white-0;
@@ -37,6 +37,7 @@
           color: $color-white-0;
           transform: scale(1);
           transition: 0.5s;
+          font-size: $fs-4;
           &:hover {
             transform: scale(0.9);
           }

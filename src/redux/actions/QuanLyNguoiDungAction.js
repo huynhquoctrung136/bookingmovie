@@ -30,6 +30,7 @@ export const dangNhapAction = (thongTinDangNhap) => {
 export const layThongTinNguoiDungAction = () => {
   return async (dispatch) => {
     try {
+      await dispatch(displayLoadingAction())
       const result = await quanLyNguoiDungService.layThongTinNguoiDung()
       if (result.data.statusCode === 200) {
         dispatch({
@@ -37,8 +38,10 @@ export const layThongTinNguoiDungAction = () => {
           thongTinNguoiDung: result.data.content,
         })
       }
+      await dispatch(hideLoadingAction())
     } catch (error) {
       console.log('error', error.response.data)
+      await dispatch(hideLoadingAction())
     }
   }
 }

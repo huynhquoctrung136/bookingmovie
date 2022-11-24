@@ -6,6 +6,7 @@ import { layThongTinChiTietPhim } from '../../redux/actions/QuanLyRapAction'
 import moment from 'moment' //npm i moment
 import { NavLink } from 'react-router-dom'
 import ModalFilm from '../../components/ModalFilm/ModalFilm'
+import { CaretRightOutlined } from '@ant-design/icons'
 const { TabPane } = Tabs
 
 const Detail = (props) => {
@@ -72,7 +73,7 @@ const Detail = (props) => {
                             handleModal()
                           }}
                         >
-                          <i className="fa fa-play"></i>
+                          <CaretRightOutlined className="detailMovie__play" />
                         </NavLink>
                       </div>
                     </div>
