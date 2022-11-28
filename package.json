@@ -41,7 +41,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deloy":"npm run build && cd buid && surge"
+    "deloy": "npm run build && cd buid && surge"
   },
   "eslintConfig": {
     "extends": [

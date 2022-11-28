@@ -15,6 +15,7 @@
   }
   .myNavBar {
     .navbar-nav {
+      text-transform: uppercase;
       border-bottom: 1px solid $color-gray-6;
       .myNavBar__navLink {
         text-decoration: none;
@@ -22,6 +23,13 @@
         padding: $p-3 $p-5;
         letter-spacing: 1px;
         @include styleText($color-white-0, $fs-1 + 1, $fw-0);
+      }
+    }
+    .dropdownMenu__header {
+      background-color: $color-black-0;
+      text-align: center;
+      .dropdownMenu__Link {
+        @include styleText($color-yellow-2, $fs-1, $fw-0);
       }
     }
   }
@@ -40,7 +48,7 @@
       #movieNavBar {
         .navbar-nav {
           .myNavBar__navLink {
-            font-size: $fs-10;
+            font-size: $fs-11;
             letter-spacing: 0.5px;
             padding: $p-3 $p-9;
           }
@@ -51,7 +59,7 @@
 }
 
 @include responsive("medium") {
-  .line.active::after{
+  .line.active::after {
     width: 0;
   }
   .header__content {
@@ -62,13 +70,12 @@
           outline: none;
         }
       }
-      #movieNavBar{
-        .navbar-nav{
+      #movieNavBar {
+        .navbar-nav {
           background-color: $color-black-0;
           text-align: center;
         }
       }
-      
     }
   }
 }

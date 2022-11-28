@@ -19,6 +19,7 @@ import Loading from './components/Loading/Loading'
 import Dashboard from './pages/Admin/Dashboard/Dashboard'
 import Films from './pages/Admin/Films/Films'
 import AdminTemplates from './templates/AdminTemplates/AdminTemplates'
+import AddNew from './pages/Admin/Films/AddNew'
 export const history = createBrowserHistory()
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
           <HomeTemplates path="/" exact Component={Home} />
 
           <AdminTemplates path="/admin" exact Component={Dashboard} />
-          <AdminTemplates path="/admin/films" exact Component={Films} />
+          <AdminTemplates path="/admin/films" exact Component={Films}/>
+          <AdminTemplates path="/admin/films/addnew" exact Component={AddNew} />
         </Switch>
       </Router>
       <ToastContainer

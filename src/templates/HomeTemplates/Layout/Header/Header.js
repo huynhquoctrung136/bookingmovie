@@ -29,14 +29,41 @@ const Header = (props) => {
       return (
         <Fragment>
           <li className="nav-item line">
-            <NavLink className="myNavBar__navLink" to="/profile">
-              <img
-                src="https://picsum.photos/200"
-                style={{ width: '30px', height: '30px', borderRadius: '50%' }}
-                alt="profile"
-              />{' '}
-              {userLogin.hoTen}
-            </NavLink>
+            <div className="dropdown">
+              <div
+                class="dropdown-toggle"
+                id="dropdownMenuButton1__header"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://picsum.photos/200"
+                  style={{ width: '25px', height: '25px', borderRadius: '50%' }}
+                  alt="profile"
+                />{' '}
+                <span style={{ color: 'white' }}> {userLogin.hoTen}</span>
+              </div>
+              <ul
+                className="dropdown-menu dropdownMenu__header"
+                aria-labelledby="dropdownMenuButton1__header"
+              >
+                <li>
+                  <NavLink className="dropdownMenu__Link" to="/profile">
+                    Thông Tin Tài Khoản
+                  </NavLink>
+                </li>
+
+                {userLogin.maLoaiNguoiDung === 'QuanTri' ? (
+                  <li>
+                    <NavLink className="dropdownMenu__Link" to="/admin">
+                      Admin
+                    </NavLink>
+                  </li>
+                ) : (
+                  ''
+                )}
+              </ul>
+            </div>
           </li>
           <li className="nav-item line">
             <NavLink
