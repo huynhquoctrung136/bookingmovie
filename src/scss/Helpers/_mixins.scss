@@ -34,8 +34,23 @@
   border: $boder-active;
 }
 
-@mixin styleGhe($bg-color, $boder,$borderRadius) {
+@mixin styleGhe($bg-color, $boder, $borderRadius) {
   background: $bg-color;
   border: $boder;
   border-radius: $borderRadius;
+}
+
+//Responsive
+@mixin responsive($screen) {
+  @if map-has-key($map: $breakpoints, $key: $screen) {
+    $value: map-get(
+      $map: $breakpoints,
+      $key: $screen,
+    );
+    @media screen and (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "`{$screen}` is not supported";
+  }
 }

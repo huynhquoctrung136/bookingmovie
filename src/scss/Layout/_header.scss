@@ -26,3 +26,49 @@
     }
   }
 }
+
+//Responsive
+@include responsive("large") {
+  .header__content {
+    .navbar-brand {
+      max-width: 180px;
+      img {
+        max-width: 100%;
+      }
+    }
+    .myNavBar {
+      #movieNavBar {
+        .navbar-nav {
+          .myNavBar__navLink {
+            font-size: $fs-10;
+            letter-spacing: 0.5px;
+            padding: $p-3 $p-9;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include responsive("medium") {
+  .line.active::after{
+    width: 0;
+  }
+  .header__content {
+    .myNavBar {
+      .navbar-toggler {
+        color: $color-yellow-2;
+        &:focus {
+          outline: none;
+        }
+      }
+      #movieNavBar{
+        .navbar-nav{
+          background-color: $color-black-0;
+          text-align: center;
+        }
+      }
+      
+    }
+  }
+}

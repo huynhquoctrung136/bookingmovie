@@ -16,6 +16,9 @@ import { ToastContainer } from 'react-toastify'
 import CheckoutTemplates from './templates/CheckoutTemplates/CheckoutTemplates'
 import Checkout from './pages/Checkout/Checkout'
 import Loading from './components/Loading/Loading'
+import Dashboard from './pages/Admin/Dashboard/Dashboard'
+import Films from './pages/Admin/Films/Films'
+import AdminTemplates from './templates/AdminTemplates/AdminTemplates'
 export const history = createBrowserHistory()
 function App() {
   return (
@@ -32,6 +35,9 @@ function App() {
           <UserTemplates path="/register" exact Component={Register} />
           <CheckoutTemplates path="/checkout/:id" exact Component={Checkout} />
           <HomeTemplates path="/" exact Component={Home} />
+
+          <AdminTemplates path="/admin" exact Component={Dashboard} />
+          <AdminTemplates path="/admin/films" exact Component={Films} />
         </Switch>
       </Router>
       <ToastContainer

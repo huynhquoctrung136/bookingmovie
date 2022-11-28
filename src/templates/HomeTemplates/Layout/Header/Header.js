@@ -64,8 +64,8 @@ const Header = (props) => {
         <span className="mx-3">+0344549065</span>
         <i className="fa fa-search"></i>
       </p>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark myNavBar">
-        <div className="container-fluid">
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark myNavBar">
+        <div className="container-md">
           <NavLink className="navbar-brand" to="">
             <img src={logoBrand} alt="logoBrand" />
           </NavLink>
@@ -74,7 +74,7 @@ const Header = (props) => {
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#movieNavBar"
-            aria-controls="navbarSupportedContent"
+            aria-controls="movieNavBar"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
