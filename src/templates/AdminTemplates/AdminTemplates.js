@@ -82,7 +82,7 @@ const AdminTemplate = (props) => {
                         title={userLogin.taiKhoan}
                       >
                         <Menu.Item key="9" icon={<HomeOutlined />}>
-                          <NavLink to="/">Home</NavLink>
+                          <NavLink to="/admin">Administrative</NavLink>
                         </Menu.Item>
                         <Menu.Item key="10" icon={<UserOutlined />}>
                           <NavLink to="/profile">Thông Tin Profile</NavLink>

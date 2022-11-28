@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Route } from 'react-router'
+import BackgroundLogin from './logoLogin.jpg';
 const UserTemplates = (props) => {
   const { Component, ...restProps } = props
   return (
@@ -7,7 +8,7 @@ const UserTemplates = (props) => {
       {...restProps}
       render={(propsRoute) => {
         return (
-          <div class="user__template">
+          <div style={{backgroundImage: `url(${BackgroundLogin})`,}} className="user__template">
             <Component {...propsRoute} />
           </div>
         )
