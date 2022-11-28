@@ -5,6 +5,7 @@ import logoBrand from './assets/logo.svg'
 import _ from 'lodash'
 import { TOKEN, USER_LOGIN } from '../../../../util/settings/config'
 import { history } from '../../../../Layout'
+import { SearchOutlined } from '@ant-design/icons'
 const Header = (props) => {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDung)
   // console.log('userLogin', userLogin);
@@ -15,7 +16,7 @@ const Header = (props) => {
         <Fragment>
           <li className="nav-item line">
             <NavLink className="myNavBar__navLink" to="/login">
-              <i className="fa fa-user-circle"></i> Đăng nhập
+              Đăng Nhập
             </NavLink>
           </li>
           <li className="nav-item line">
@@ -89,7 +90,7 @@ const Header = (props) => {
       <p className="bg-dark header__info pt-3">
         <i className="fas fa-phone-alt"></i>
         <span className="mx-3">+0344549065</span>
-        <i className="fa fa-search"></i>
+        <SearchOutlined />
       </p>
       <nav className="navbar navbar-expand-md navbar-dark bg-dark myNavBar">
         <div className="container-md">

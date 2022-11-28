@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logoTix from './logoTix.png'
+import {CloseOutlined} from "@ant-design/icons"
 const Register = () => {
   return (
     <div className='register'>
@@ -38,8 +39,8 @@ const Register = () => {
         </div>
         <div className="registerContent__Close">
           <NavLink to="/">
-            <button className="btn btn__close">
-              <i class="fa fa-times"></i>
+          <button className="btn btn__close">
+            <CloseOutlined />
             </button>
           </NavLink>
         </div>

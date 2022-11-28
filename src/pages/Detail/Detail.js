@@ -259,9 +259,6 @@ const Detail = (props) => {
                       </div>
                     </div>
                   </Tabs.TabPane>
-                  <Tabs.TabPane tab="Bình luận" key="3">
-                    Content of Tab Pane 3
-                  </Tabs.TabPane>
                 </Tabs>
               </div>
             </div>

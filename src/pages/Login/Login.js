@@ -4,6 +4,7 @@ import logoTix from './logoTix.png'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
 import { dangNhapAction } from '../../redux/actions/QuanLyNguoiDungAction'
+import {CloseOutlined} from "@ant-design/icons"
 const Login = () => {
   const dispatch = useDispatch();
   // const {userLogin}=useSelector(state=>state.QuanLyNguoiDung);
@@ -72,7 +73,7 @@ const Login = () => {
         <div className="loginContent__Close">
           <NavLink to="/">
             <button className="btn btn__close">
-              <i className="fa fa-times"></i>
+            <CloseOutlined />
             </button>
           </NavLink>
         </div>

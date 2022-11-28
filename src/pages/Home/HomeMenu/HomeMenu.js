@@ -2,8 +2,8 @@ import React, { Fragment, useState } from 'react'
 import moment from 'moment'
 import { Tabs } from 'antd'
 import { NavLink } from 'react-router-dom'
+import {RightOutlined,ClockCircleOutlined} from "@ant-design/icons"
 const { TabPane } = Tabs
-
 const HomeMenu = (props) => {
   const [tabPosition, setTabPosition] = useState('left')
   let { heThongRapChieu } = props
@@ -83,14 +83,14 @@ const HomeMenu = (props) => {
                               className="showTimeRow__NavLink"
                               to={`/detail/${phim.maPhim}`}
                             >
-                              Full Detail <i className="fa fa-angle-right"></i>
+                              Full Detail <RightOutlined />
                             </NavLink>
                           </p>
 
                           <div className="row">
                             <div className="col-10 ">
                               <span className="showTimeRow__runningTimes d-flex align-items-center">
-                                <i className="fa fa-clock"></i>VIEWING TIMES
+                              <ClockCircleOutlined /> VIEWING TIMES
                               </span>
                               <div>
                                 {phim.lstLichChieuTheoPhim
