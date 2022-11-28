@@ -12,11 +12,10 @@
       background: transparent;
       opacity: 1;
       box-sizing: border-box;
-      &.active{
+      &.active {
         background-color: $color-white-0;
       }
     }
-
   }
 }
 

@@ -1,17 +1,19 @@
 import { Table, Button } from 'antd'
 import { SearchOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Fragment } from 'react'
 import { Input, Space } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { layDanhSachPhim } from '../../../redux/actions/QuanLyPhimAction'
+import {
+  layDanhSachPhim,
+  xoaPhimAction,
+} from '../../../redux/actions/QuanLyPhimAction'
 import { NavLink } from 'react-router-dom'
 import { history } from '../../../Layout'
 
 export default function Films() {
   const dispatch = useDispatch()
   const { arrFilmDefault } = useSelector((state) => state.QuanLyPhim)
-  // console.log('arrFilmDefault', arrFilmDefault)
 
   useEffect(() => {
     dispatch(layDanhSachPhim())
@@ -100,18 +102,18 @@ export default function Films() {
               <EditOutlined style={{ color: 'blue' }} />{' '}
             </NavLink>
             <span
-              onClick={() => {
-                //Gọi action Xóa
-                if (
-                  window.confirm(
-                    'Bạn có chắc mún xóa phim này không' + film.tenPhim,
-                  )
-                ) {
-                }
-              }}
+              style={{ cursor: 'pointer' }}
               key={2}
               className="text-2xl"
-              to="/"
+              onClick={() => {
+                //Gọi action xoá
+                if (
+                  window.confirm('Bạn có chắc muốn xoá phim ' + film.tenPhim)
+                ) {
+                  //Gọi action
+                  dispatch(xoaPhimAction(film.maPhim))
+                }
+              }}
             >
               <DeleteOutlined style={{ color: 'red' }} />{' '}
             </span>
@@ -126,6 +128,12 @@ export default function Films() {
   const onChange = (pagination, filters, sorter, extra) => {
     console.log('params', pagination, filters, sorter, extra)
   }
+
+  const onSearch = (value) => {
+    console.log(value)
+    //Gọi api layDanhSachPhim
+    dispatch(layDanhSachPhim(value))
+  }
   return (
     <Fragment>
       <Button
@@ -138,9 +146,10 @@ export default function Films() {
       </Button>
       <Search
         className="mb-5"
-        placeholder="input search text"
+        placeholder="Tìm kiếm phim"
         enterButton={<SearchOutlined />}
         size="large"
+        onSearch={onSearch}
       />
       <Table
         columns={columns}
