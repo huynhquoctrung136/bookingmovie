@@ -1,5 +1,6 @@
 import { quanLyNguoiDungService } from '../../services/QuanLyNguoiDung'
 import {
+  DANG_KY_ACTION,
   DANG_NHAP_ACTION,
   SET_THONG_TIN_NGUOI_DUNG,
 } from './types/QuanLyNguoiDungType'
@@ -18,10 +19,10 @@ export const dangNhapAction = (thongTinDangNhap) => {
         })
         //Chuyển hướng đăng nhập về trang trước đó
         history.goBack()
-        console.log('result', result)
+        // console.log('result', result)
       }
     } catch (error) {
-      toast.error('Đăng nhập thất bại!')
+      toast.error('Mật khẩu và tài khoản không đúng!')
       console.log('error', error.response.data)
     }
   }
@@ -42,6 +43,27 @@ export const layThongTinNguoiDungAction = () => {
     } catch (error) {
       console.log('error', error.response.data)
       await dispatch(hideLoadingAction())
+    }
+  }
+}
+
+export const dangKyAction = (thongTinDangKy) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.dangKy(thongTinDangKy)
+      if (result.data.statusCode === 200) {
+        toast.success('Đăng ký thành công!')
+        dispatch({
+          type: DANG_KY_ACTION,
+          payload: result.data.content,
+        })
+        //Chuyển hướng đăng ký về trang đăng nhập đó
+        history.push('/login')
+        console.log('result', result)
+      }
+    } catch (error) {
+      toast.error('Tài khoản đã tồn tại trong hệ thống!')
+      console.log('error', error.response.data)
     }
   }
 }

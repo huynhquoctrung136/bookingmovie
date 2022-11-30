@@ -30,9 +30,9 @@ const Header = (props) => {
       return (
         <Fragment>
           <li className="nav-item line">
-            <div className="dropdown">
+            <div className="dropdown dropdown__items">
               <div
-                class="dropdown-toggle"
+                className="dropdown-toggle "
                 id="dropdownMenuButton1__header"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"

@@ -38,7 +38,7 @@ const Checkout = (props) => {
   // const { heThongRapChieu } = useSelector((state) => state.QuanLyRap)
 
   // console.log('thongTinNguoiDung', thongTinNguoiDung)
-  console.log('userLogin', userLogin)
+  // console.log('userLogin', userLogin)
   const dispatch = useDispatch()
   // console.log('chiTietPhongVe', chiTietPhongVe)
 
@@ -304,7 +304,7 @@ const CheckoutTab = (props) => {
   const [tabPosition, setTabPosition] = useState('right')
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDung)
   const { tabActive } = useSelector((state) => state.QuanLyDatVe)
-  console.log('tabActive', tabActive)
+  // console.log('tabActive', tabActive)
   const dispatch = useDispatch()
   const { chiTietPhongVe, danhSachGheDangDat } = useSelector(
     (state) => state.QuanLyDatVe,

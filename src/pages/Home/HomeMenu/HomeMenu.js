@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import moment from 'moment'
 import { Tabs } from 'antd'
 import { NavLink } from 'react-router-dom'
-import {RightOutlined,ClockCircleOutlined} from "@ant-design/icons"
+import { RightOutlined, ClockCircleOutlined } from '@ant-design/icons'
 const { TabPane } = Tabs
 const HomeMenu = (props) => {
   const [tabPosition, setTabPosition] = useState('left')
@@ -90,7 +90,7 @@ const HomeMenu = (props) => {
                           <div className="row">
                             <div className="col-10 ">
                               <span className="showTimeRow__runningTimes d-flex align-items-center">
-                              <ClockCircleOutlined /> VIEWING TIMES
+                                <ClockCircleOutlined /> VIEWING TIMES
                               </span>
                               <div>
                                 {phim.lstLichChieuTheoPhim

@@ -21,7 +21,7 @@ const HomeCarousel = (props) => {
             }}
           >
             <img
-              style={{ height: '600px' }}
+              style={{ height: '100%' }}
               src={item.hinhAnh}
               className="w-100"
               alt={item.hinhAnh}

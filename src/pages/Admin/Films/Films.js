@@ -126,11 +126,11 @@ export default function Films() {
   ]
 
   const onChange = (pagination, filters, sorter, extra) => {
-    console.log('params', pagination, filters, sorter, extra)
+    // console.log('params', pagination, filters, sorter, extra)
   }
 
   const onSearch = (value) => {
-    console.log(value)
+    // console.log(value)
     //Gọi api layDanhSachPhim
     dispatch(layDanhSachPhim(value))
   }

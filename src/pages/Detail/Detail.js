@@ -14,7 +14,7 @@ const Detail = (props) => {
   const [isShowModalTrailer, setIsShowModalTrailer] = useState(false)
 
   const filmDetail = useSelector((state) => state.QuanLyRap.filmDetail)
-  console.log('filmDetail', filmDetail)
+  // console.log('filmDetail', filmDetail)
   const dispatch = useDispatch()
 
   const handleModal = () => {
