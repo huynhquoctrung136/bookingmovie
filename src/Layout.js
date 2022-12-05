@@ -20,6 +20,7 @@ import Dashboard from './pages/Admin/Dashboard/Dashboard'
 import Films from './pages/Admin/Films/Films'
 import AdminTemplates from './templates/AdminTemplates/AdminTemplates'
 import AddNew from './pages/Admin/Films/AddNew'
+import Edit from './pages/Admin/Films/Edit'
 export const history = createBrowserHistory()
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <AdminTemplates path="/admin" exact Component={Dashboard} />
           <AdminTemplates path="/admin/films" exact Component={Films}/>
           <AdminTemplates path="/admin/films/addnew" exact Component={AddNew} />
+          <AdminTemplates path="/admin/films/edit/:id" exact Component={Edit} />
         </Switch>
       </Router>
       <ToastContainer

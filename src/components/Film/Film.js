@@ -51,7 +51,7 @@ const Film = (props) => {
           </NavLink>
         </div>
       </div>
-      <ModalFilm handleClose={handleClose} show={isShowModalTrailer} />
+      <ModalFilm phim={phim} handleClose={handleClose} show={isShowModalTrailer} />
     </>
   )
 }

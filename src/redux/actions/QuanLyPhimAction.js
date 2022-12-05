@@ -2,6 +2,7 @@ import { toast } from 'react-toastify'
 import { quanLyPhimService } from '../../services/QuanLyPhimService'
 import { displayLoadingAction, hideLoadingAction } from './LoadingAction'
 import { SET_DANH_SACH_PHIM, SET_THONG_TIN_PHIM } from './types/QuanLyPhimType'
+import { history } from '../../Layout'
 
 export const layDanhSachPhim = (tenPhim = '') => {
   return async (dispatch) => {
@@ -26,10 +27,12 @@ export const themPhimUploadHinhAction = (formData) => {
   return async (dispatch) => {
     try {
       let result = await quanLyPhimService.themPhimUploadHinh(formData)
-      toast.success("Thêm Phim Thành Công!");
+      toast.success('Thêm Phim Thành Công!')
       console.log('result', result.data.content)
+      dispatch(layDanhSachPhim())
+      history.push('/admin/films')
     } catch (errors) {
-      toast.success("Thêm Phim Thất Bại!");
+      toast.success('Thêm Phim Thất Bại!')
       console.log(errors.response?.data)
     }
   }
@@ -51,22 +54,20 @@ export const layThongTinPhimAction = (maPhim) => {
   }
 }
 
-// export const capNhatPhimUploadAction = (formData) => {
-//   return async (dispatch) => {
-//       try {
+export const capNhatPhimUploadAction = (formData) => {
+  return async (dispatch) => {
+    try {
+      let result = await quanLyPhimService.capNhatPhimUpload(formData)
+      alert('Cập nhật phim thành công!')
+      console.log('result', result.data.content)
 
-//           let result = await quanLyPhimService.capNhatPhimUpload(formData);
-//           alert('Cập nhật phim thành công!')
-//           console.log('result', result.data.content);
-
-//           dispatch(layDanhSachPhimAction());
-//           history.push('/admin/films');
-
-//       } catch (errors) {
-//           console.log(errors.response?.data)
-//       }
-//   }
-// }
+      dispatch(layDanhSachPhim())
+      history.push('/admin/films')
+    } catch (errors) {
+      console.log(errors.response?.data)
+    }
+  }
+}
 
 export const xoaPhimAction = (maPhim) => {
   return async (dispatch) => {
