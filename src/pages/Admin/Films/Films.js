@@ -1,5 +1,5 @@
 import { Table, Button } from 'antd'
-import { SearchOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons'
+import { SearchOutlined, DeleteOutlined, EditOutlined,CalendarOutlined } from '@ant-design/icons'
 import React, { useEffect, useState } from 'react'
 import { Fragment } from 'react'
 import { Input, Space } from 'antd'
@@ -117,6 +117,9 @@ export default function Films() {
             >
               <DeleteOutlined style={{ color: 'red' }} />{' '}
             </span>
+            <NavLink key={1} className=" mr-2 text-2xl" to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`} onClick={()=>{
+                        localStorage.setItem('filmParams',JSON.stringify(film));
+                    }}><CalendarOutlined style={{ color: 'green' }} /> </NavLink>
           </Fragment>
         )
       },

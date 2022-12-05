@@ -25,7 +25,7 @@ import { GROUPID } from '../../../util/settings/config'
 const Edit = (props) => {
   const [componentSize, setComponentSize] = useState('default')
   const { thongTinPhim } = useSelector((state) => state.QuanLyPhim)
-  console.log('thongTinPhim', thongTinPhim)
+  // console.log('thongTinPhim', thongTinPhim)
   const [imgSrc, setImgSrc] = useState('')
   const dispatch = useDispatch()
 

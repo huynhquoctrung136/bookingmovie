@@ -9,6 +9,7 @@ import {
   HomeOutlined,
   ImportOutlined,
   UserOutlined,
+  ArrowLeftOutlined,
 } from '@ant-design/icons'
 import { NavLink } from 'react-router-dom'
 import _ from 'lodash'
@@ -74,13 +75,16 @@ const AdminTemplate = (props) => {
                               width: '30px',
                               height: '30px',
                               borderRadius: '50%',
-                              marginRight:"15px"
+                              marginRight: '15px',
                             }}
                             alt="profile"
                           />
                         }
                         title={userLogin.taiKhoan}
                       >
+                        <Menu.Item key="8" icon={<ArrowLeftOutlined />}>
+                          <NavLink to="/home">Quay lại trang chủ</NavLink>
+                        </Menu.Item>
                         <Menu.Item key="9" icon={<HomeOutlined />}>
                           <NavLink to="/admin">Administrative</NavLink>
                         </Menu.Item>
@@ -114,9 +118,9 @@ const AdminTemplate = (props) => {
                     <Menu.Item key="1" icon={<UserOutlined />}>
                       <NavLink to="/admin/users">Users</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="2" icon={<DesktopOutlined />}>
+                    {/* <Menu.Item key="2" icon={<DesktopOutlined />}>
                       <NavLink to="/admin/showtimes">Showtime</NavLink>
-                    </Menu.Item>
+                    </Menu.Item> */}
                   </Menu>
                 </Sider>
                 <Layout className="site-layout">

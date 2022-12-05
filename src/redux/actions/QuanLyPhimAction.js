@@ -28,7 +28,7 @@ export const themPhimUploadHinhAction = (formData) => {
     try {
       let result = await quanLyPhimService.themPhimUploadHinh(formData)
       toast.success('Thêm Phim Thành Công!')
-      console.log('result', result.data.content)
+      // console.log('result', result.data.content)
       dispatch(layDanhSachPhim())
       history.push('/admin/films')
     } catch (errors) {
