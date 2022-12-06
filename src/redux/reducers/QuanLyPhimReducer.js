@@ -26,8 +26,8 @@ const initialState = {
     },
   ],
   arrFilmDefault: [],
-  dangChieu: true,
-  sapChieu: true,
+  dangChieu: false,
+  sapChieu: false,
   thongTinPhim: {},
 }
 

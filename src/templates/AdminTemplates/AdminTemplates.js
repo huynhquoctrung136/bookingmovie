@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router'
 import { TOKEN, USER_LOGIN } from '../../util/settings/config'
 import { Layout, Menu, Breadcrumb } from 'antd'
 import {
-  DesktopOutlined,
+  UserAddOutlined,
   FileOutlined,
   HomeOutlined,
   ImportOutlined,
@@ -115,12 +115,15 @@ const AdminTemplate = (props) => {
                       </Menu.Item>
                     </SubMenu>
 
-                    <Menu.Item key="1" icon={<UserOutlined />}>
-                      <NavLink to="/admin/users">Users</NavLink>
-                    </Menu.Item>
-                    {/* <Menu.Item key="2" icon={<DesktopOutlined />}>
-                      <NavLink to="/admin/showtimes">Showtime</NavLink>
-                    </Menu.Item> */}
+                    <SubMenu key="sub3" icon={<UserOutlined />} title="Users">
+                      <Menu.Item key="14" icon={<UserOutlined />}>
+                        <NavLink to="/admin/users">Danh Sách Users</NavLink>
+                      </Menu.Item>
+                      <Menu.Item key="15" icon={<UserAddOutlined />}>
+                        <NavLink to="/admin/users/addnew">Add Users</NavLink>
+                      </Menu.Item>
+                    </SubMenu>
+
                   </Menu>
                 </Sider>
                 <Layout className="site-layout">
