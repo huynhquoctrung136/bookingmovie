@@ -14,6 +14,7 @@ const initialState = {
   userLogin: user,
   thongTinNguoiDung: {},
   userRegister: {},
+  danhSachNguoiDung:[],
 }
 
 export const QuanLyNguoiDungReducer = (state = initialState, action) => {
@@ -42,6 +43,10 @@ export const QuanLyNguoiDungReducer = (state = initialState, action) => {
       }
       return { ...state }
     }
+
+    // case GET_USERS:{
+
+    // }
     default:
       return state
   }

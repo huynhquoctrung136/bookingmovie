@@ -19,11 +19,12 @@ export class QuanLyNguoiDungService extends baseService {
   }
 
   //Lấy danh sách người dùng phân trang
-  layDanhSachNguoiDung = () => {
+  layDanhSachNguoiDung = (soTrang) => {
     return this.get(
-      `/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=${GROUPID}&soTrang=1`,
+      `/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=${GROUPID}&soTrang=${soTrang}`,
     )
   }
 }
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService()
+
