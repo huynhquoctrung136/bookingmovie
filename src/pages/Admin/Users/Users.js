@@ -1,41 +1,26 @@
 import React, { useEffect } from 'react'
 import { Table } from 'react-bootstrap'
 import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons'
-import { quanLyNguoiDungService } from '../../../services/QuanLyNguoiDung'
-import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
+import { useSelector, useDispatch } from 'react-redux'
+import { layDanhSachNguoiDung } from '../../../redux/actions/QuanLyNguoiDungAction'
 
 const Users = () => {
-  const [state, setState] = useState({
-    listUser: [],
-    totalPages: 0,
-    totalUsers: 0,
-  })
+  const { listUsers, totalPages, totalUsers } = useSelector(
+    (state) => state.QuanLyNguoiDung,
+  )
+  const dispatch = useDispatch()
+  console.log('listUsers', listUsers)
 
-  const handlePageClick = (event) => {
-    getUsers(+event.selected + 1)
-  }
   useEffect(() => {
-    getUsers(1)
+    const action = layDanhSachNguoiDung(1)
+    dispatch(action)
   }, [])
 
-  const getUsers = async (page) => {
-    let res = await quanLyNguoiDungService.layDanhSachNguoiDung(page)
-    console.log('res', res)
-    try {
-      setState({
-        ...state,
-        listUser: res.data.content,
-        totalUsers: res.data.content.count,
-        totalPages: res.data.content.totalPages,
-      })
-    } catch (error) {
-      console.log('error', error.response?.data)
-    }
+  const handlePageClick = (event) => {
+    dispatch(layDanhSachNguoiDung(+event.selected + 1))
   }
 
-  // console.log('toTalUsers', state.totalUsers);
-  // console.log('totalPages', state.totalPages)
   return (
     <div className="mt-3">
       <div
@@ -66,7 +51,7 @@ const Users = () => {
           </tr>
         </thead>
         <tbody>
-          {state.listUser.items?.map((item, index) => {
+          {listUsers.items?.map((item, index) => {
             return (
               <tr
                 key={`users-${index}`}
@@ -103,7 +88,7 @@ const Users = () => {
         nextLabel=">"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
-        pageCount={state.totalPages}
+        pageCount={totalPages}
         previousLabel="<"
         renderOnZeroPageCount={null}
         pageClassName="page-item"

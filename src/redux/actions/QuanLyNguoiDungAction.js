@@ -2,6 +2,7 @@ import { quanLyNguoiDungService } from '../../services/QuanLyNguoiDung'
 import {
   DANG_KY_ACTION,
   DANG_NHAP_ACTION,
+  GET_USERS,
   SET_THONG_TIN_NGUOI_DUNG,
 } from './types/QuanLyNguoiDungType'
 import { toast } from 'react-toastify'
@@ -63,6 +64,26 @@ export const dangKyAction = (thongTinDangKy) => {
       }
     } catch (error) {
       toast.error('Tài khoản đã tồn tại trong hệ thống!')
+      console.log('error', error.response.data)
+    }
+  }
+}
+
+//Lấy danh sách người dùng
+export const layDanhSachNguoiDung = (soTrang) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.layDanhSachNguoiDung(soTrang)
+      if (result.data.statusCode === 200) {
+        dispatch({
+          type: GET_USERS,
+          listUsers: result.data.content,
+          totalPages:result.data.content.totalPages,
+          totalUsers: result.data.content.count,
+        })
+      }
+      // console.log('result: ' + result)
+    } catch (error) {
       console.log('error', error.response.data)
     }
   }

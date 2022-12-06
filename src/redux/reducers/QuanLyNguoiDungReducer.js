@@ -2,6 +2,7 @@ import { TOKEN, USER_LOGIN } from '../../util/settings/config'
 import {
   DANG_KY_ACTION,
   DANG_NHAP_ACTION,
+  GET_USERS,
   SET_THONG_TIN_NGUOI_DUNG,
 } from '../actions/types/QuanLyNguoiDungType'
 import { toast } from 'react-toastify'
@@ -14,7 +15,9 @@ const initialState = {
   userLogin: user,
   thongTinNguoiDung: {},
   userRegister: {},
-  danhSachNguoiDung:[],
+  listUsers: [],
+  totalPages: 0,
+  totalUsers: 0,
 }
 
 export const QuanLyNguoiDungReducer = (state = initialState, action) => {
@@ -44,9 +47,12 @@ export const QuanLyNguoiDungReducer = (state = initialState, action) => {
       return { ...state }
     }
 
-    // case GET_USERS:{
-
-    // }
+    case GET_USERS: {
+      state.listUsers = action.listUsers
+      state.totalPages = action.totalPages
+      state.totalUsers = action.totalUsers
+      return { ...state }
+    }
     default:
       return state
   }

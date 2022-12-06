@@ -19,6 +19,11 @@ export class QuanLyNguoiDungService extends baseService {
   }
 
   //Lấy danh sách người dùng phân trang
+  // layDanhSachNguoiDung = (soTrang) => {
+  //   return this.get(
+  //     `/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=${GROUPID}&soTrang=${soTrang}`,
+  //   )
+  // }
   layDanhSachNguoiDung = (soTrang) => {
     return this.get(
       `/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=${GROUPID}&soTrang=${soTrang}`,
@@ -27,4 +32,3 @@ export class QuanLyNguoiDungService extends baseService {
 }
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService()
-
