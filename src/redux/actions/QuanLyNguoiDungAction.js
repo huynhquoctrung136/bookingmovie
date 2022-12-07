@@ -73,6 +73,7 @@ export const dangKyAction = (thongTinDangKy) => {
 export const layDanhSachNguoiDung = (soTrang) => {
   return async (dispatch) => {
     try {
+      dispatch(displayLoadingAction())
       const result = await quanLyNguoiDungService.layDanhSachNguoiDung(soTrang)
       if (result.data.statusCode === 200) {
         dispatch({
@@ -81,9 +82,11 @@ export const layDanhSachNguoiDung = (soTrang) => {
           totalPages:result.data.content.totalPages,
           totalUsers: result.data.content.count,
         })
+        dispatch(hideLoadingAction())
       }
       // console.log('result: ' + result)
     } catch (error) {
+      dispatch(hideLoadingAction())
       console.log('error', error.response.data)
     }
   }

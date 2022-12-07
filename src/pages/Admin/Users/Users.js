@@ -4,6 +4,7 @@ import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons'
 import ReactPaginate from 'react-paginate'
 import { useSelector, useDispatch } from 'react-redux'
 import { layDanhSachNguoiDung } from '../../../redux/actions/QuanLyNguoiDungAction'
+import { NavLink } from 'react-router-dom'
 
 const Users = () => {
   const { listUsers, totalPages, totalUsers } = useSelector(
@@ -22,15 +23,17 @@ const Users = () => {
   }
 
   return (
-    <div className="mt-3">
+    <div className="conatiner mt-3">
       <div
         className="mb-3"
         style={{ display: 'flex', justifyContent: 'space-between' }}
       >
         <h3>Danh Sách Người Dùng</h3>
-        <button className="btn btn-success">
-          <PlusOutlined />
-        </button>
+        <NavLink to={`/admin/users/addnew`}>
+          <button className="btn btn-success">
+            <PlusOutlined />
+          </button>
+        </NavLink>
       </div>
       <Table
         style={{ width: '1092px', height: '204px', position: 'relative' }}
