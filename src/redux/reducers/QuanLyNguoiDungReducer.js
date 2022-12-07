@@ -3,6 +3,9 @@ import {
   DANG_KY_ACTION,
   DANG_NHAP_ACTION,
   GET_USERS,
+  GET_USERS_PAG,
+  GET_USER_TYPES,
+  SEARCH_USERS,
   SET_THONG_TIN_NGUOI_DUNG,
 } from '../actions/types/QuanLyNguoiDungType'
 import { toast } from 'react-toastify'
@@ -16,8 +19,17 @@ const initialState = {
   thongTinNguoiDung: {},
   userRegister: {},
   listUsers: [],
+  listNguoiDung: [{}],
   totalPages: 0,
   totalUsers: 0,
+  searchUser: [],
+
+  loaiNguoiDung: [
+    {
+      maLoaiNguoiDung: 'KhachHang',
+      tenLoai: 'Khách hàng',
+    },
+  ],
 }
 
 export const QuanLyNguoiDungReducer = (state = initialState, action) => {
@@ -47,12 +59,27 @@ export const QuanLyNguoiDungReducer = (state = initialState, action) => {
       return { ...state }
     }
 
-    case GET_USERS: {
+    case GET_USERS_PAG: {
       state.listUsers = action.listUsers
       state.totalPages = action.totalPages
       state.totalUsers = action.totalUsers
       return { ...state }
     }
+
+    case GET_USER_TYPES: {
+      state.loaiNguoiDung = action.loaiNguoiDung
+      return { ...state }
+    }
+    case GET_USERS: {
+      state.listNguoiDung = action.listNguoiDung
+      return { ...state }
+    }
+
+    case SEARCH_USERS: {
+      state.searchUser = action.searchUser
+      return { ...state }
+    }
+
     default:
       return state
   }
