@@ -32,7 +32,7 @@ function App() {
       <Router history={history}>
         <Switch>
           <HomeTemplates path="/home" exact Component={Home} />
-          <HomeTemplates path="/contact" exact Component={Contact} />
+          {/* <HomeTemplates path="/contact" exact Component={Contact} /> */}
           <HomeTemplates path="/news" exact Component={News} />
           <HomeTemplates path="/detail/:id" exact Component={Detail} />
           <HomeTemplates path="/profile" exact Component={Profile} />

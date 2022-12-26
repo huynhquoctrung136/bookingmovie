@@ -8,7 +8,20 @@ import { history } from '../../../../Layout'
 import { SearchOutlined } from '@ant-design/icons'
 const Header = (props) => {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDung)
-  // console.log('userLogin', userLogin);
+  const mainNav = [
+    {
+      display: 'Trang chủ',
+      path: '/',
+    },
+    {
+      display: 'Lịch chiếu',
+      path: '/',
+    },
+    {
+      display: 'Tin tức',
+      path: '/news',
+    },
+  ]
 
   const renderLogin = () => {
     if (_.isEmpty(userLogin)) {
@@ -110,26 +123,15 @@ const Header = (props) => {
           </button>
           <div className="collapse navbar-collapse" id="movieNavBar">
             <ul className="navbar-nav" style={{ marginLeft: 'auto' }}>
-              <li className="nav-item line">
-                <NavLink className="myNavBar__navLink" to="/">
-                  Trang chủ
-                </NavLink>
-              </li>
-              <li className="nav-item line">
-                <NavLink className="myNavBar__navLink" to="/">
-                  Lịch chiếu
-                </NavLink>
-              </li>
-              <li className="nav-item line">
-                <NavLink className="myNavBar__navLink" to="/news">
-                  Tin tức
-                </NavLink>
-              </li>
-              <li className="nav-item line">
-                <NavLink className="myNavBar__navLink" to="/contact">
-                  Liên hệ
-                </NavLink>
-              </li>
+              {mainNav.map((item, index) => {
+                return (
+                  <li className="nav-item line" key={index}>
+                    <NavLink className="myNavBar__navLink" to={item.path}>
+                      {item.display}
+                    </NavLink>
+                  </li>
+                )
+              })}
               {renderLogin()}
             </ul>
           </div>
