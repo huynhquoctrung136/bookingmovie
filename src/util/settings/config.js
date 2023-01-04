@@ -4,3 +4,4 @@ export const GROUPID = 'GP00';
 
 
 export const USER_LOGIN = 'USER_LOGIN';
+export const USER_PROFILE = 'USER_PROFILE';

@@ -10,3 +10,7 @@ export const GET_USERS="GET_USERS";
 
 export const GET_USER_TYPES="GET_USER_TYPES";
 export const SEARCH_USERS="SEARCH_USERS";
+
+
+//LẤY THÔNG TIN USERS
+export const GET_INFO_USER="GET_INFO_USER"

@@ -11,7 +11,7 @@ import {
 export const layChiTietPhongVeAction = (maLichChieu) => {
   return async (dispatch) => {
     try {
-      dispatch(displayLoadingAction())
+      await dispatch(displayLoadingAction())
       const result = await quanLyDatVeService.layChiTietPhongVe(maLichChieu)
       if (result.data.statusCode === 200) {
         dispatch({
@@ -19,12 +19,12 @@ export const layChiTietPhongVeAction = (maLichChieu) => {
           chiTietPhongVe: result.data.content,
         })
       }
-      dispatch(hideLoadingAction())
+      await dispatch(hideLoadingAction())
     } catch (error) {
       console.log('error: ', error)
       console.log('error', error?.response.data)
       toast.error('Thất bại!')
-      dispatch(hideLoadingAction())
+      await dispatch(hideLoadingAction())
     }
   }
 }
@@ -44,11 +44,11 @@ export const datVeAction = (thongTinDatVe = new ThongTinDatVe()) => {
           type: CHUYEN_TAB,
         })
       }
-      dispatch(hideLoadingAction())
+      await dispatch(hideLoadingAction())
     } catch (error) {
       console.log('error: ', error)
       console.log('error', error?.response.data)
-      dispatch(hideLoadingAction())
+      await dispatch(hideLoadingAction())
     }
   }
 }

@@ -1,13 +1,15 @@
-import React, { Fragment } from 'react'
-import { useSelector } from 'react-redux'
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import logoBrand from './assets/logo.svg'
 import _ from 'lodash'
 import { TOKEN, USER_LOGIN } from '../../../../util/settings/config'
 import { history } from '../../../../Layout'
 import { SearchOutlined } from '@ant-design/icons'
+import { layThongTinUser } from '../../../../redux/actions/QuanLyNguoiDungAction'
 const Header = (props) => {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDung)
+  const dispatch=useDispatch();
   const mainNav = [
     {
       display: 'Trang chủ',
@@ -21,8 +23,15 @@ const Header = (props) => {
       display: 'Tin tức',
       path: '/news',
     },
+    {
+      display: 'Liên Hệ',
+      path: '/contact',
+    },
   ]
 
+  useEffect(() => {
+      dispatch(layThongTinUser());
+  }, [])
   const renderLogin = () => {
     if (_.isEmpty(userLogin)) {
       return (
@@ -84,7 +93,7 @@ const Header = (props) => {
               onClick={() => {
                 localStorage.removeItem(USER_LOGIN)
                 localStorage.removeItem(TOKEN)
-                history.goBack()
+                history.push('/login')
                 window.location.reload()
               }}
               className="myNavBar__navLink"

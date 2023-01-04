@@ -2,6 +2,7 @@ import { quanLyNguoiDungService } from '../../services/QuanLyNguoiDung'
 import {
   DANG_KY_ACTION,
   DANG_NHAP_ACTION,
+  GET_INFO_USER,
   GET_USERS,
   GET_USERS_PAG,
   GET_USER_TYPES,
@@ -13,6 +14,7 @@ import { history } from '../../Layout'
 import { displayLoadingAction, hideLoadingAction } from './LoadingAction'
 export const dangNhapAction = (thongTinDangNhap) => {
   return async (dispatch) => {
+    await dispatch(displayLoadingAction())
     try {
       const result = await quanLyNguoiDungService.dangNhap(thongTinDangNhap)
       if (result.data.statusCode === 200) {
@@ -22,8 +24,8 @@ export const dangNhapAction = (thongTinDangNhap) => {
           thongTinDangNhap: result.data.content,
         })
         //Chuyển hướng đăng nhập về trang trước đó
-        history.goBack()
-        // console.log('result', result)
+        history.push('/profile')
+        window.location.reload()
       }
     } catch (error) {
       toast.error('Mật khẩu và tài khoản không đúng!')
@@ -183,6 +185,26 @@ export const xoaNguoiDungAction = (taiKhoan) => {
     } catch (errors) {
       toast.error('Xóa Người Dùng Thất Bại')
       console.log('errors', errors.response?.data)
+    }
+  }
+}
+
+export const layThongTinUser = () => {
+  return async (dispatch) => {
+    try {
+      dispatch(displayLoadingAction())
+      let result = await quanLyNguoiDungService.thongTinNguoiDung()
+      // console.log('result', result)
+      if (result && result.data && result.data.statusCode === 200) {
+        dispatch({
+          type: GET_INFO_USER,
+          userProfile: result.data.content,
+        })
+      }
+      dispatch(hideLoadingAction())
+    } catch (errors) {
+      console.log(errors.response?.data)
+      dispatch(hideLoadingAction())
     }
   }
 }

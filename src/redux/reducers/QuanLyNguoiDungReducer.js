@@ -2,6 +2,7 @@ import { TOKEN, USER_LOGIN } from '../../util/settings/config'
 import {
   DANG_KY_ACTION,
   DANG_NHAP_ACTION,
+  GET_INFO_USER,
   GET_USERS,
   GET_USERS_PAG,
   GET_USER_TYPES,
@@ -14,16 +15,26 @@ if (localStorage.getItem(USER_LOGIN)) {
   user = JSON.parse(localStorage.getItem(USER_LOGIN))
 }
 
+let userProfile = {}
+if (localStorage.getItem(USER_LOGIN)) {
+  userProfile = JSON.parse(localStorage.getItem(USER_LOGIN))
+}
+
+let thongTinNguoiDung = {}
+if (localStorage.getItem(USER_LOGIN)) {
+  thongTinNguoiDung = JSON.parse(localStorage.getItem(USER_LOGIN))
+}
+
 const initialState = {
   userLogin: user,
-  thongTinNguoiDung: {},
+  thongTinNguoiDung: thongTinNguoiDung,
   userRegister: {},
   listUsers: [],
   listNguoiDung: [{}],
   totalPages: 0,
   totalUsers: 0,
   searchUser: [],
-
+  userProfile: userProfile,
   loaiNguoiDung: [
     {
       maLoaiNguoiDung: 'KhachHang',
@@ -77,6 +88,11 @@ export const QuanLyNguoiDungReducer = (state = initialState, action) => {
 
     case SEARCH_USERS: {
       state.searchUser = action.searchUser
+      return { ...state }
+    }
+
+    case GET_INFO_USER: {
+      state.userProfile = action.userProfile
       return { ...state }
     }
 

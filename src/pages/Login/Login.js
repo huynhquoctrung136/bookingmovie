@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import logoTix from './logoTix.png'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
-import { dangNhapAction } from '../../redux/actions/QuanLyNguoiDungAction'
-import {CloseOutlined} from "@ant-design/icons"
+import {
+  dangNhapAction,
+} from '../../redux/actions/QuanLyNguoiDungAction'
+import { CloseOutlined } from '@ant-design/icons'
 const Login = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   // const {userLogin}=useSelector(state=>state.QuanLyNguoiDung);
   // console.log("userLogin", userLogin);
   const formik = useFormik({
@@ -16,8 +18,7 @@ const Login = () => {
     },
     onSubmit: (values) => {
       dispatch(dangNhapAction(values))
-      console.log("values",values);
-     
+      console.log('values', values)
     },
   })
 
@@ -73,7 +74,7 @@ const Login = () => {
         <div className="loginContent__Close">
           <NavLink to="/">
             <button className="btn btn__close">
-            <CloseOutlined />
+              <CloseOutlined />
             </button>
           </NavLink>
         </div>

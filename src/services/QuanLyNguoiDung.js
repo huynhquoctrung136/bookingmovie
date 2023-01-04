@@ -51,9 +51,11 @@ export class QuanLyNguoiDungService extends baseService {
   }
 
   xoaNguoiDung = (taiKhoan) => {
-    return this.delete(
-      `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
-    )
+    return this.delete(`/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`)
+  }
+
+  thongTinNguoiDung = () => {
+    return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`)
   }
 }
 

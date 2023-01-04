@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Fragment, useState } from 'react'
 import moment from 'moment'
 import { Tabs } from 'antd'
@@ -7,7 +8,7 @@ const { TabPane } = Tabs
 const HomeMenu = (props) => {
   const [tabPosition, setTabPosition] = useState('left')
   let { heThongRapChieu } = props
-  console.log(heThongRapChieu)
+  // console.log(heThongRapChieu)
 
   const renderHeThongRap = () => {
     return heThongRapChieu?.map((heThongRap, index) => {

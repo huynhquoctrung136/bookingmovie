@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-anonymous-default-export */
 import React, { Fragment, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
@@ -31,6 +32,7 @@ const Checkout = (props) => {
   const { chiTietPhongVe, danhSachGheDangDat } = useSelector(
     (state) => state.QuanLyDatVe,
   )
+  // eslint-disable-next-line no-unused-vars
   const { userLogin, thongTinNguoiDung } = useSelector(
     (state) => state.QuanLyNguoiDung,
   )
@@ -46,7 +48,7 @@ const Checkout = (props) => {
     dispatch(layChiTietPhongVeAction(props.match.params.id))
     dispatch(layDanhSachCumRap())
     dispatch(layThongTinNguoiDungAction())
-  }, [])
+  }, [dispatch, props.match.params.id])
 
   const { thongTinPhim, danhSachGhe } = chiTietPhongVe
 
