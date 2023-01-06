@@ -195,7 +195,7 @@ export const layThongTinUser = () => {
       dispatch(displayLoadingAction())
       let result = await quanLyNguoiDungService.thongTinNguoiDung()
       // console.log('result', result)
-      if (result && result.data && result.data.statusCode === 200) {
+      if (result.data.statusCode === 200) {
         dispatch({
           type: GET_INFO_USER,
           userProfile: result.data.content,
@@ -203,8 +203,24 @@ export const layThongTinUser = () => {
       }
       dispatch(hideLoadingAction())
     } catch (errors) {
-      console.log(errors.response?.data)
+      if (errors.response.statusCode !== 200) {
+        history.push('')
+      }
       dispatch(hideLoadingAction())
+    }
+  }
+}
+
+
+export const capNhatThongTinAction = () => {
+  return async (dispatch) => {
+    try {
+      let result = await quanLyNguoiDungService.thongTinNguoiDung()
+      alert('Cập nhật thông tin thành công!')
+      console.log('result', result.data.content)
+      dispatch(layThongTinUser())
+    } catch (errors) {
+      console.log(errors.response?.data)
     }
   }
 }

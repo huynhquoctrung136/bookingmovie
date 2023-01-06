@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Tabs } from 'antd'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
-import { layThongTinUser } from '../../redux/actions/QuanLyNguoiDungAction'
+import {
+  capNhatThongTinAction,
+  layThongTinUser,
+} from '../../redux/actions/QuanLyNguoiDungAction'
 import moment from 'moment'
 import _ from 'lodash'
+import { GROUPID } from '../../util/settings/config'
 
 const { TabPane } = Tabs
 const Profile = () => {
@@ -27,11 +31,13 @@ const Profile = () => {
       hoTen: userProfile?.hoTen,
       email: userProfile?.email,
       soDT: userProfile?.soDT,
-      maNhom: 'GP00',
-      loaiNguoiDung: '',
+      maNhom: GROUPID,
+      loaiNguoiDung: 'Khách hàng',
       thongTinDatVe: userProfile?.thongTinDatVe,
     },
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      dispatch(capNhatThongTinAction(values))
+    },
   })
 
   const renderTicketItems = () => {
@@ -95,7 +101,7 @@ const Profile = () => {
                   </div>
                 </div>
                 <div className="col-md-8 profile__info__right">
-                  <form className="w-75">
+                  <form className="w-75" onSubmit={formik.handleSubmit}>
                     <div className="mb-3">
                       <label
                         htmlFor="exampleInputUsername"
@@ -121,7 +127,7 @@ const Profile = () => {
                         Mật khẩu
                       </label>
                       <input
-                        name="password"
+                        name="matKhau"
                         type="password"
                         className="form-control"
                         id="exampleInputPassword"
@@ -161,7 +167,7 @@ const Profile = () => {
                       </label>
                       <input
                         name="soDT"
-                        type="number"
+                        type="text"
                         className="form-control"
                         id="exampleInputPhone"
                         onChange={formik.handleChange}

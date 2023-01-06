@@ -57,6 +57,7 @@ export class QuanLyNguoiDungService extends baseService {
   thongTinNguoiDung = () => {
     return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`)
   }
+
 }
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService()
