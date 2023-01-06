@@ -31,66 +31,76 @@ const Register = (props) => {
         </div>
         <div className="registerContent__Form">
           <form
-            className="col-10 mx-auto"
             onSubmit={(e) => {
               formik.handleSubmit(e)
             }}
           >
-            <div className="form-group">
-              <label>Tài Khoản</label>
-              <input
-                type="text"
-                name="taiKhoan"
-                className="form-control"
-                value={formik.values.taiKhoan}
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Mật khẩu</label>
-              <input
-                name="matKhau"
-                type="password"
-                className="form-control"
-                value={formik.values.matKhau}
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Họ và tên</label>
-              <input
-                name="hoTen"
-                type="text"
-                className="form-control"
-                value={formik.values.hoTen}
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                name="email"
-                type="text"
-                className="form-control"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Số điện thoại</label>
-              <input
-                name="soDt"
-                type="text"
-                className="form-control"
-                value={formik.values.soDt}
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <button className="btn--register">Đăng ký</button>
+            <div className="row">
+              <div className="col-sm-6">
+                <div className="form-group">
+                  <label>Tài Khoản</label>
+                  <input
+                    type="text"
+                    name="taiKhoan"
+                    className="form-control"
+                    value={formik.values.taiKhoan}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Mật khẩu</label>
+                  <input
+                    name="matKhau"
+                    type="password"
+                    className="form-control"
+                    value={formik.values.matKhau}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Họ và tên</label>
+                  <input
+                    name="hoTen"
+                    type="text"
+                    className="form-control"
+                    value={formik.values.hoTen}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div className="form-group">
+                  <label>Email</label>
+                  <input
+                    name="email"
+                    type="text"
+                    className="form-control"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Số điện thoại</label>
+                  <input
+                    name="soDt"
+                    type="text"
+                    className="form-control"
+                    value={formik.values.soDt}
+                    onChange={formik.handleChange}
+                  />
+                </div>
+                <div className="form-group pt-3">
+                  <button className="btn--register">Đăng ký</button>
+                </div>
+              </div>
             </div>
           </form>
         </div>
+        <NavLink to="/login">
+          <p className="text-danger" style={{ fontSize: '25px' }}>
+            * Bạn đã có tài khoản
+          </p>
+        </NavLink>
         <div className="registerContent__Close">
           <NavLink to="/">
             <button className="btn btn__close">

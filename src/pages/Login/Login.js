@@ -61,7 +61,7 @@ const Login = () => {
             </div>
             <div className="form-group">
               <NavLink to="/register">
-                <p className="text-success" style={{ fontSize: '18px' }}>
+                <p className="text-success" style={{ fontSize: '25px' }}>
                   * Đăng Ký
                 </p>
               </NavLink>
