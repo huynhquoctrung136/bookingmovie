@@ -13,7 +13,7 @@ const Profile = () => {
   }
 
   const { userProfile } = useSelector((state) => state.QuanLyNguoiDung)
-  console.log('userProfile', userProfile)
+  // console.log('userProfile', userProfile)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -66,9 +66,11 @@ const Profile = () => {
           </td>
           <td>{item.giaVe.toLocaleString()} đ</td>
           <td>
-            {item.danhSachGhe?.reduce((tongTien, ghe) => {
-              return tongTien + ghe.giaVe
-            }, 0).toLocaleString()}
+            {item.danhSachGhe
+              ?.reduce((tongTien, ghe) => {
+                return tongTien + ghe.giaVe
+              }, 0)
+              .toLocaleString()}
           </td>
         </tr>
       )
