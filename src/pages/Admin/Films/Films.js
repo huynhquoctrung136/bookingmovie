@@ -1,5 +1,11 @@
 import { Table, Button } from 'antd'
-import { SearchOutlined, DeleteOutlined, EditOutlined,CalendarOutlined } from '@ant-design/icons'
+import {
+  SearchOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  CalendarOutlined,
+  PlusOutlined,
+} from '@ant-design/icons'
 import React, { useEffect, useState } from 'react'
 import { Fragment } from 'react'
 import { Input, Space } from 'antd'
@@ -117,9 +123,16 @@ export default function Films() {
             >
               <DeleteOutlined style={{ color: 'red' }} />{' '}
             </span>
-            <NavLink key={1} className=" mr-2 text-2xl" to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`} onClick={()=>{
-                        localStorage.setItem('filmParams',JSON.stringify(film));
-                    }}><CalendarOutlined style={{ color: 'green' }} /> </NavLink>
+            <NavLink
+              key={1}
+              className=" mr-2 text-2xl"
+              to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}
+              onClick={() => {
+                localStorage.setItem('filmParams', JSON.stringify(film))
+              }}
+            >
+              <CalendarOutlined style={{ color: 'green' }} />{' '}
+            </NavLink>
           </Fragment>
         )
       },
@@ -139,27 +152,46 @@ export default function Films() {
   }
   return (
     <Fragment>
-      <Button
-        className="my-5"
-        onClick={() => {
-          history.push('/admin/films/addnew')
-        }}
-      >
-        Thêm Phim
-      </Button>
-      <Search
-        className="mb-5"
-        placeholder="Tìm kiếm phim"
-        enterButton={<SearchOutlined />}
-        size="large"
-        onSearch={onSearch}
-      />
-      <Table
-        columns={columns}
-        dataSource={arrFilmDefault}
-        onChange={onChange}
-        rowKey={'maPhim'}
-      />
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item active" aria-current="page">
+            <NavLink to="/admin">Trang chủ</NavLink>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Danh sách menu
+          </li>
+         
+        </ol>
+      </nav>
+      <div className="container-fluid">
+        <div className="card">
+          <div class="card-header d-flex justify-content-between">
+            <h3>Danh sách Phim</h3>
+            <Button
+              onClick={() => {
+                history.push('/admin/films/addnew')
+              }}
+            >
+              + Thêm Phim
+            </Button>
+          </div>
+          <div className="card-body">
+            <Search
+              className="mb-5"
+              placeholder="Tìm kiếm phim"
+              enterButton={<SearchOutlined />}
+              size="large"
+              onSearch={onSearch}
+            />
+            <Table
+              columns={columns}
+              dataSource={arrFilmDefault}
+              onChange={onChange}
+              rowKey={'maPhim'}
+            />
+          </div>
+        </div>
+      </div>
     </Fragment>
   )
 }

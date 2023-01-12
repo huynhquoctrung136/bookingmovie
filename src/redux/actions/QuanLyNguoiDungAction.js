@@ -24,8 +24,8 @@ export const dangNhapAction = (thongTinDangNhap) => {
           thongTinDangNhap: result.data.content,
         })
         //Chuyển hướng đăng nhập về trang trước đó
-        history.push('/profile')
-        window.location.reload()
+        history.goBack();
+        // window.location.reload()
       }
     } catch (error) {
       toast.error('Mật khẩu và tài khoản không đúng!')

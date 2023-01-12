@@ -5,6 +5,7 @@ import { layDanhSachPhim } from '../../redux/actions/QuanLyPhimAction'
 import { layDanhSachCumRap } from '../../redux/actions/QuanLyRapAction'
 import HomeCarousel from '../../templates/HomeTemplates/Layout/HomeCarousel/HomeCarousel'
 import HomeMenu from './HomeMenu/HomeMenu'
+import BookingMenu from './BookingMenu/BookingMenu'
 const Home = (props) => {
   const { arrPhim } = useSelector((state) => state.QuanLyPhim)
   const { heThongRapChieu } = useSelector((state) => state.QuanLyRap)
@@ -18,6 +19,7 @@ const Home = (props) => {
   return (
     <>
       <HomeCarousel />
+      <BookingMenu/>
       <div className="newIn section">
         <div className="container">
           <h2 className="newIn__title">Showing Movie</h2>

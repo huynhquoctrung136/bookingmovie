@@ -85,9 +85,9 @@ const AdminTemplate = (props) => {
                         <Menu.Item key="8" icon={<ArrowLeftOutlined />}>
                           <NavLink to="/home">Quay lại trang chủ</NavLink>
                         </Menu.Item>
-                        <Menu.Item key="9" icon={<HomeOutlined />}>
+                        {/* <Menu.Item key="9" icon={<HomeOutlined />}>
                           <NavLink to="/admin">Administrative</NavLink>
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item key="10" icon={<UserOutlined />}>
                           <NavLink to="/profile">Thông Tin Profile</NavLink>
                         </Menu.Item>

@@ -9,7 +9,7 @@ import { SearchOutlined } from '@ant-design/icons'
 import { layThongTinUser } from '../../../../redux/actions/QuanLyNguoiDungAction'
 const Header = (props) => {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDung)
-  const dispatch=useDispatch();
+  const dispatch = useDispatch()
   const mainNav = [
     {
       display: 'Trang chủ',
@@ -23,14 +23,14 @@ const Header = (props) => {
       display: 'Tin tức',
       path: '/news',
     },
-    {
-      display: 'Liên Hệ',
-      path: '/contact',
-    },
+    // {
+    //   display: 'Liên Hệ',
+    //   path: '/contact',
+    // },
   ]
 
   useEffect(() => {
-      dispatch(layThongTinUser());
+    dispatch(layThongTinUser())
   }, [])
   const renderLogin = () => {
     if (_.isEmpty(userLogin)) {
@@ -93,7 +93,7 @@ const Header = (props) => {
               onClick={() => {
                 localStorage.removeItem(USER_LOGIN)
                 localStorage.removeItem(TOKEN)
-                history.push('/login')
+                history.goBack()
                 window.location.reload()
               }}
               className="myNavBar__navLink"

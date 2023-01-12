@@ -18,6 +18,7 @@ import { useDispatch } from 'react-redux'
 import _ from 'lodash'
 import { themPhimUploadHinhAction } from '../../../redux/actions/QuanLyPhimAction'
 import { GROUPID } from '../../../util/settings/config'
+import { NavLink } from 'react-router-dom'
 
 const AddNew = () => {
   const [componentSize, setComponentSize] = useState('default')
@@ -98,74 +99,103 @@ const AddNew = () => {
 
   return (
     <>
-      <Form
-        onSubmitCapture={formik.handleSubmit}
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
-        initialValues={{
-          size: componentSize,
-        }}
-        onValuesChange={onFormLayoutChange}
-        size={componentSize}
-      >
-        <h3>Thêm mới phim </h3>
-        <Form.Item label="Form Size" name="size">
-          <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="default">Default</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label="Tên phim">
-          <Input name="tenPhim" onChange={formik.handleChange} />
-        </Form.Item>
-        <Form.Item label="Trailer">
-          <Input name="trailer" onChange={formik.handleChange} />
-        </Form.Item>
-        <Form.Item label="Mô tả">
-          <Input name="moTa" onChange={formik.handleChange} />
-        </Form.Item>
-        <Form.Item label="Ngày khởi chiếu">
-          <DatePicker format={'DD/MM/YYYY'} onChange={handleChangeDatePicker} />
-        </Form.Item>
-        <Form.Item label="Đang chiếu">
-          <Switch onChange={handleChangeSwitch('dangChieu')} />
-        </Form.Item>
-        <Form.Item label="Sắp chiếu">
-          <Switch onChange={handleChangeSwitch('sapChieu')} />
-        </Form.Item>
-        <Form.Item label="Hot">
-          <Switch onChange={handleChangeSwitch('hot')} />
-        </Form.Item>
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item active" aria-current="page">
+            <NavLink to="">Trang chủ</NavLink>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            <NavLink to="/admin/films">Danh sách menu</NavLink>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Thêm Menu
+          </li>
+        </ol>
+      </nav>
 
-        <Form.Item label="Số sao">
-          <InputNumber
-            onChange={handleChangeInputNumber('danhGia')}
-            min={1}
-            max={10}
-          />
-        </Form.Item>
+      <div className="container-fluid">
+        <div className="card">
+          <div class="card-header">
+            <h3>Thêm phim mới</h3>
+          </div>
+          <div className="card-body">
+            <Form
+              onSubmitCapture={formik.handleSubmit}
+              labelCol={{
+                span: 4,
+              }}
+              wrapperCol={{
+                span: 14,
+              }}
+              layout="horizontal"
+              initialValues={{
+                size: componentSize,
+              }}
+              onValuesChange={onFormLayoutChange}
+              size={componentSize}
+            >
+              <Form.Item label="Form Size" name="size">
+                <Radio.Group>
+                  <Radio.Button value="small">Small</Radio.Button>
+                  <Radio.Button value="default">Default</Radio.Button>
+                  <Radio.Button value="large">Large</Radio.Button>
+                </Radio.Group>
+              </Form.Item>
+              <Form.Item label="Tên phim">
+                <Input name="tenPhim" onChange={formik.handleChange} />
+              </Form.Item>
+              <Form.Item label="Trailer">
+                <Input name="trailer" onChange={formik.handleChange} />
+              </Form.Item>
+              <Form.Item label="Mô tả">
+                <Input name="moTa" onChange={formik.handleChange} />
+              </Form.Item>
+              <Form.Item label="Ngày khởi chiếu">
+                <DatePicker
+                  format={'DD/MM/YYYY'}
+                  onChange={handleChangeDatePicker}
+                />
+              </Form.Item>
+              <Form.Item label="Đang chiếu">
+                <Switch onChange={handleChangeSwitch('dangChieu')} />
+              </Form.Item>
+              <Form.Item label="Sắp chiếu">
+                <Switch onChange={handleChangeSwitch('sapChieu')} />
+              </Form.Item>
+              <Form.Item label="Hot">
+                <Switch onChange={handleChangeSwitch('hot')} />
+              </Form.Item>
 
-        <Form.Item label="Hình ảnh">
-          <input
-            type="file"
-            onChange={handleChangeFile}
-            accept="image/png, image/jpeg,image/gif,image/png"
-          />
-          <br />
-          <img style={{ width: 150, height: 150 }} src={imgSrc} alt="..." />
-        </Form.Item>
-        <Form.Item label="Tác vụ">
-          <button type="submit" className="bg-blue-300 text-white p-2">
-            Thêm phim
-          </button>
-        </Form.Item>
-      </Form>
+              <Form.Item label="Số sao">
+                <InputNumber
+                  onChange={handleChangeInputNumber('danhGia')}
+                  min={1}
+                  max={10}
+                />
+              </Form.Item>
+
+              <Form.Item label="Hình ảnh">
+                <input
+                  type="file"
+                  onChange={handleChangeFile}
+                  accept="image/png, image/jpeg,image/gif,image/png"
+                />
+                <br />
+                <img
+                  style={{ width: 150, height: 150 }}
+                  src={imgSrc}
+                  alt="..."
+                />
+              </Form.Item>
+              <Form.Item label="Tác vụ">
+                <button type="submit" className="bg-blue-300 text-white p-2">
+                  Thêm phim
+                </button>
+              </Form.Item>
+            </Form>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

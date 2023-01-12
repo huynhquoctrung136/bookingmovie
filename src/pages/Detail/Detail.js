@@ -4,9 +4,10 @@ import { Tabs, Rate } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { layThongTinChiTietPhim } from '../../redux/actions/QuanLyRapAction'
 import moment from 'moment' //npm i moment
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import ModalFilm from '../../components/ModalFilm/ModalFilm'
 import { CaretRightOutlined } from '@ant-design/icons'
+import _ from 'lodash'
 const { TabPane } = Tabs
 
 const Detail = (props) => {
@@ -14,6 +15,7 @@ const Detail = (props) => {
   const [isShowModalTrailer, setIsShowModalTrailer] = useState(false)
 
   const filmDetail = useSelector((state) => state.QuanLyRap.filmDetail)
+  // console.log('filmDetail', filmDetail)
   // console.log('filmDetail', filmDetail)
   const dispatch = useDispatch()
 
@@ -23,6 +25,76 @@ const Detail = (props) => {
 
   const handleClose = () => {
     setIsShowModalTrailer(false)
+  }
+
+  const renderLichChieu = () => {
+    if (!_.isEmpty(filmDetail.heThongRapChieu)) {
+      return filmDetail.heThongRapChieu?.map((htr, index) => {
+        return (
+          <TabPane
+            tab={
+              <div className="detailButton__htr d-flex">
+                <img style={{ width: '50px' }} src={htr.logo} alt={htr.logo} />
+                <div className="detailButtonHTR__name">{htr.tenHeThongRap}</div>
+              </div>
+            }
+            key={`htrc-${index}`}
+          >
+            {htr.cumRapChieu?.map((cumRap, index) => {
+              return (
+                <div
+                  key={`cumrap-${index}`}
+                  className="detailCumRapChieu__content"
+                >
+                  <div className="row">
+                    <div className="col-1">
+                      <img
+                        src={cumRap.hinhAnh}
+                        alt={cumRap.hinhAnh}
+                        onError={(e) => {
+                          e.target.onerror = null
+                          e.target.src = 'https://picsum.photos/75/75'
+                        }}
+                      />
+                    </div>
+                    <div className="col-11">
+                      <div className="detailCumRapChieu_desc">
+                        <h3 className="detailCumRapChieu__name">
+                          {cumRap.tenCumRap}
+                        </h3>
+                        <p className="detailCumRapChieu__district">
+                          {cumRap.diaChi}
+                        </p>
+                        <div>
+                          {cumRap.lichChieuPhim
+                            ?.slice(0, 12)
+                            .map((lichChieu, index) => {
+                              return (
+                                <NavLink
+                                  key={`lichchieu-${index}`}
+                                  to={`/checkout/${lichChieu.maLichChieu}`}
+                                >
+                                  <button className="btn--runningTimes">
+                                    {moment(lichChieu.ngayChieuGioChieu).format(
+                                      'hh:mm A',
+                                    )}
+                                  </button>
+                                </NavLink>
+                              )
+                            })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </TabPane>
+        )
+      })
+    } else {
+      return <h3 className="text-danger">Hiện không có lịch chiếu!</h3>
+    }
   }
   useEffect(() => {
     let { id } = props.match.params
@@ -90,9 +162,13 @@ const Detail = (props) => {
                         <p className="detailContentDes__runngTime">
                           120 phút - 10 Tix - 2D/Digital
                         </p>
-                        <a href="#">
-                          <button className="btn--booking">Mua Vé</button>
-                        </a>
+                        {!_.isEmpty(filmDetail.heThongRapChieu) ? (
+                          <Link to="#">
+                            <button className="btn--booking">Mua Vé</button>
+                          </Link>
+                        ) : (
+                          ''
+                        )}
                       </div>
                     </div>
                   </div>
@@ -132,78 +208,7 @@ const Detail = (props) => {
               <div className="detailTab__button">
                 <Tabs defaultActiveKey="1">
                   <Tabs.TabPane tab="Lịch Chiếu" key="1">
-                    <Tabs tabPosition={'left'}>
-                      {filmDetail.heThongRapChieu?.map((htr, index) => {
-                        return (
-                          <TabPane
-                            tab={
-                              <div className="detailButton__htr d-flex">
-                                <img
-                                  style={{ width: '50px' }}
-                                  src={htr.logo}
-                                  alt={htr.logo}
-                                />
-                                <div className="detailButtonHTR__name">
-                                  {htr.tenHeThongRap}
-                                </div>
-                              </div>
-                            }
-                            key={`htrc-${index}`}
-                          >
-                            {htr.cumRapChieu?.map((cumRap, index) => {
-                              return (
-                                <div
-                                  key={`cumrap-${index}`}
-                                  className="detailCumRapChieu__content"
-                                >
-                                  <div className="row">
-                                    <div className="col-1">
-                                      <img
-                                        src={cumRap.hinhAnh}
-                                        alt={cumRap.hinhAnh}
-                                        onError={(e) => {
-                                          e.target.onerror = null
-                                          e.target.src =
-                                            'https://picsum.photos/75/75'
-                                        }}
-                                      />
-                                    </div>
-                                    <div className="col-11">
-                                      <div className="detailCumRapChieu_desc">
-                                        <h3 className="detailCumRapChieu__name">
-                                          {cumRap.tenCumRap}
-                                        </h3>
-                                        <p className="detailCumRapChieu__district">
-                                          {cumRap.diaChi}
-                                        </p>
-                                        <div>
-                                          {cumRap.lichChieuPhim
-                                            ?.slice(0, 12)
-                                            .map((lichChieu, index) => {
-                                              return (
-                                                <NavLink
-                                                  key={`lichchieu-${index}`}
-                                                  to={`/checkout/${lichChieu.maLichChieu}`}
-                                                >
-                                                  <button className="btn--runningTimes">
-                                                    {moment(
-                                                      lichChieu.ngayChieuGioChieu,
-                                                    ).format('hh:mm A')}
-                                                  </button>
-                                                </NavLink>
-                                              )
-                                            })}
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              )
-                            })}
-                          </TabPane>
-                        )
-                      })}
-                    </Tabs>
+                    <Tabs tabPosition={'left'}>{renderLichChieu()}</Tabs>
                   </Tabs.TabPane>
                   <Tabs.TabPane tab="Thông Tin" key="2">
                     <div
